@@ -1,9 +1,9 @@
 package com.ask.maryam.play;
 
 public class MastermindPlay extends Play{
-   int nbOfGoodPlace;
-   int nbOfPresentNb;
-   Mode mode;
+   private int nbOfGoodPlace;
+   private int nbOfPresentNb;
+   private Mode mode;
    //PlayParameters playParams;
 
 }
