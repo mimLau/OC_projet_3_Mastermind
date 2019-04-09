@@ -1,6 +1,6 @@
 package com.ask.maryam.play;
 
-public class HumanPlayer {
+public class HumanPlayer extends Player{
     private int playerSecretNb;
     private int playerProposedNb;
 }
