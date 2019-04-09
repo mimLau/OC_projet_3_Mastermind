@@ -1,5 +1,8 @@
 package com.ask.maryam.menu;
 
+import com.ask.maryam.play.ChallengerMode;
+import com.ask.maryam.play.MastermindPlay;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -67,17 +70,22 @@ public class Menu {
 
             switch (selectedMenu){
                 case 1:
-                    //TODO create mastermmind class with challengerMode attribut.
+                    //TODO create MastermindPlay class with challengerMode attribut:
+
+                    ChallengerMode chalMode = new ChallengerMode();
+                    MastermindPlay mastermindPlay = new MastermindPlay(chalMode);
+                    chalMode.getComputerScretNbTable();
+
                     System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
                     break;
 
                 case 2:
-                    //TODO create Mastermind class with defenderMode attribut:
+                    //TODO create MastermindPlay class with defenderMode attribut:
                     System.out.println("Vous avez choisi de jouer à Mastermind en mode defenseur.");
                     break;
 
                 case 3:
-                    //TODO create Mastermind class with dualMode attribut:
+                    //TODO create MastermindPlay class with dualMode attribut:
                     System.out.println("Vous avez choisi de jouer à Mastermind en mode duel.");
                     break;
             }
