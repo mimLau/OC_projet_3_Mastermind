@@ -1,6 +1,6 @@
 package com.ask.maryam.play;
 
 public class HumanPlayer {
-    int playerSecretNb;
-    int playerProposedNb;
+    private int playerSecretNb;
+    private int playerProposedNb;
 }
