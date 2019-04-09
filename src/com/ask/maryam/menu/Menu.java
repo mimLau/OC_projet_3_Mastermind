@@ -58,40 +58,41 @@ public class Menu {
             } catch (InputMismatchException e) {
                 sc.next();
             }
-            launchPlay();
+
+            if(mastermindPlay)
+                launchMasterMindPlay();
+                else if (moreAndLessPlay)
+                    launchMoreAndLessPlay();
 
         }while(selectedMenu != 1 && selectedMenu != 2 && selectedMenu != 3);
 
     }
 
-    public void launchPlay(){
+    public void launchMasterMindPlay() {
+        switch (selectedMenu) {
+            case 1:
+                //TODO create MastermindPlay class with challengerMode attribut:
 
-        if(mastermindPlay) {
+                ChallengerMode chalMode = new ChallengerMode();
+                MastermindPlay mastermindPlay = new MastermindPlay(chalMode);
+                chalMode.getComputerScretNbTable();
 
-            switch (selectedMenu){
-                case 1:
-                    //TODO create MastermindPlay class with challengerMode attribut:
+                System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
+                break;
 
-                    ChallengerMode chalMode = new ChallengerMode();
-                    MastermindPlay mastermindPlay = new MastermindPlay(chalMode);
-                    chalMode.getComputerScretNbTable();
+            case 2:
+                //TODO create MastermindPlay class with defenderMode attribut:
+                System.out.println("Vous avez choisi de jouer à Mastermind en mode defenseur.");
+                break;
 
-                    System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
-                    break;
+            case 3:
+                //TODO create MastermindPlay class with dualMode attribut:
+                System.out.println("Vous avez choisi de jouer à Mastermind en mode duel.");
+                break;
+        }
+    }
 
-                case 2:
-                    //TODO create MastermindPlay class with defenderMode attribut:
-                    System.out.println("Vous avez choisi de jouer à Mastermind en mode defenseur.");
-                    break;
-
-                case 3:
-                    //TODO create MastermindPlay class with dualMode attribut:
-                    System.out.println("Vous avez choisi de jouer à Mastermind en mode duel.");
-                    break;
-            }
-
-        } else if (moreAndLessPlay){
-
+        public void launchMoreAndLessPlay(){
             switch (selectedMenu){
                 case 1:
                     //TODO create MoreAndLessPlay class class with challengerMode attribut.
@@ -109,6 +110,4 @@ public class Menu {
                     break;
             }
         }
-
-    }
 }
