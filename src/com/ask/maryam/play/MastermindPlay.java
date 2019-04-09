@@ -6,4 +6,8 @@ public class MastermindPlay extends Play{
    private Mode mode;
    //PlayParameters playParams;
 
+
+    public MastermindPlay(Mode mode) {
+        this.mode = mode;
+    }
 }
