@@ -1,5 +1,6 @@
 package com.ask.maryam.menu;
 
+import com.ask.maryam.game.MoreAndLessGame;
 import com.ask.maryam.mode.ChallengerMode;
 import com.ask.maryam.game.MastermindGame;
 
@@ -12,6 +13,9 @@ public class Menu {
     private int selectedMenu;
     private boolean mastermindPlay;
     private boolean moreAndLessPlay;
+
+    private MastermindGame mastGame = new MastermindGame();
+    private MoreAndLessGame moreAndLGame = new MoreAndLessGame();
 
 
     public void displayPrincipalMenu(){
@@ -36,10 +40,10 @@ public class Menu {
     public void displayPlayMenu(){
 
              if(selectedMenu == 1) {
-                 System.out.println("\n********** Bienvenue dans le jeu Mastermind **********\n");
+                 mastGame.startGameMessage();
                  mastermindPlay = true;
              } else if(selectedMenu == 2) {
-                 System.out.println("\n********** Bienvenue dans le jeu du plus ou moins **********\n");
+                 moreAndLGame.startGameMessage();
                  moreAndLessPlay = true;
              }
         displayMode();
@@ -74,7 +78,7 @@ public class Menu {
                 //TODO create MastermindPlay class with challengerMode attribut:
 
                 ChallengerMode chalMode = new ChallengerMode();
-                MastermindGame mastermindPlay = new MastermindGame(chalMode);
+                //MastermindGame mastermindPlay = new MastermindGame(chalMode);
                 chalMode.getComputerScretNbTable();
 
                 System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
