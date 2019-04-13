@@ -14,27 +14,16 @@ public class ChallengerMode extends Mode {
     protected Player computer = new ComputerPlayer();
 
 
-
-
-    public List<Integer> getPlayerProposedNbTable() {
-        return playerProposedNbList;
-    }
-
-    public List<Integer> getComputerScretNbTable() {
+    public List <Integer> putComputerSecretNbInList(){
+        String computerSecretNb = computer.getSecretNb();
+        for(int i = 0; i< computerSecretNb.length(); i++){
+            computerSecretNbList.add(i, Character.getNumericValue(computerSecretNb.charAt(i)));
+        }
         return computerSecretNbList;
     }
 
-    /*public int getPlayerSecretNb(){
-        int secretNb = player.getSecretNb();
-
-                return secretNb;
-    }*/
-
     public List <Integer> putPlayerProposedNInList(){
         String playerProposedNb = player.getProposedNb();
-
-        System.out.println("Dans ChallengerMode " + playerProposedNb);
-        System.out.println("Length " + playerProposedNb.length());
 
         for(int i = 0; i< playerProposedNb.length(); i++){
             playerProposedNbList.add(i, Character.getNumericValue(playerProposedNb.charAt(i)));
