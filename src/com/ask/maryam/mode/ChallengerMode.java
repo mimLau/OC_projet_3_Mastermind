@@ -24,11 +24,11 @@ public class ChallengerMode extends Mode {
         return computerSecretNbList;
     }
 
-    public int getPlayerSecretNb(){
+    /*public int getPlayerSecretNb(){
         int secretNb = player.getSecretNb();
 
                 return secretNb;
-    }
+    }*/
 
     public List <Integer> putPlayerProposedNInList(){
         String playerProposedNb = player.getProposedNb();
