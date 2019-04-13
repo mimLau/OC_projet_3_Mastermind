@@ -7,11 +7,10 @@ public class Main {
 
     public static void main(String [] args){
 
-        /*Menu menu = new Menu();
-        menu.displayPrincipalMenu();*/
+        Menu menu = new Menu();
+        menu.displayPrincipalMenu();
 
-        Parameters params = new Parameters();
-        params.retrieveProperties();
+        /*Parameters params = new Parameters();
 
         System.out.println("Nombre de cases de la combinaison secrète: " + params.getSecretNbSize());
         System.out.println("Nombre d'essais possible: " + params.getTrialNbMax());
@@ -20,6 +19,6 @@ public class Main {
 
         params.setDevMode(Boolean.valueOf(args[0]).booleanValue());
 
-        System.out.println("Mode développeur " + params.isDevMode());
+        System.out.println("Mode développeur " + params.isDevMode());*/
     }
 }

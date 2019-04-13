@@ -1,5 +1,8 @@
 package com.ask.maryam.game;
 
+import com.ask.maryam.mode.ChallengerMode;
+import com.ask.maryam.mode.DefenderMode;
+import com.ask.maryam.mode.DualMode;
 import com.ask.maryam.mode.Mode;
 import com.ask.maryam.parameters.Parameters;
 
@@ -9,6 +12,11 @@ public class MastermindGame implements Game{
    private Mode mode;
    private Parameters params;
 
+   public MastermindGame() {}
+
+   public void setMode(Mode mode) {
+      this.mode = mode;
+   }
 
    public int goodPlace(){
       return 0;
@@ -20,6 +28,26 @@ public class MastermindGame implements Game{
 
    public void startWelcomeMessage() {
        System.out.println("\n********** Bienvenue dans le jeu Mastermind **********\n");
+   }
+
+   @Override
+   public void startPlaying(ChallengerMode challMode) {
+
+      challMode.playerProposedNbTable();
+      System.out.println(challMode.playerProposedNbTable());
+      // need computer secret nb table
+      // need scann method for retrieving player proposed number transformed in a table
+      // who tour is it
+   }
+
+   @Override
+   public void startPlaying(DefenderMode defenderMode) {
+
+   }
+
+   @Override
+   public void startPlaying(DualMode dualMode) {
+
    }
 
    @Override
@@ -38,10 +66,4 @@ public class MastermindGame implements Game{
    }
 
 
-
-
-
-    /*public MastermindGame(Mode mode) {
-        this.mode = mode;
-    }*/
 }

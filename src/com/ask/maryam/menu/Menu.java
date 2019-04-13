@@ -11,11 +11,11 @@ public class Menu {
 
     Scanner sc = new Scanner(System.in);
     private int selectedMenu;
-    private boolean mastermindPlay;
-    private boolean moreAndLessPlay;
+    private boolean isMastermindPlay;
+    private boolean isMoreAndLessPlay;
 
-    private MastermindGame mastGame = new MastermindGame();
-    private MoreAndLessGame moreAndLGame = new MoreAndLessGame();
+    private MastermindGame masterMindGame = new MastermindGame();
+    private MoreAndLessGame moreAndLessGame = new MoreAndLessGame();
 
 
     public void displayPrincipalMenu(){
@@ -40,11 +40,11 @@ public class Menu {
     public void displayPlayMenu(){
 
              if(selectedMenu == 1) {
-                 mastGame.startGameMessage();
-                 mastermindPlay = true;
+                 masterMindGame.startWelcomeMessage();
+                 isMastermindPlay = true;
              } else if(selectedMenu == 2) {
-                 moreAndLGame.startGameMessage();
-                 moreAndLessPlay = true;
+                 moreAndLessGame.startWelcomeMessage();
+                 isMoreAndLessPlay = true;
              }
         displayMode();
     }
@@ -63,9 +63,9 @@ public class Menu {
                 sc.next();
             }
 
-            if(mastermindPlay)
+            if(isMastermindPlay)
                 launchMasterMindPlay();
-                else if (moreAndLessPlay)
+                else if (isMoreAndLessPlay)
                     launchMoreAndLessPlay();
 
         }while(selectedMenu != 1 && selectedMenu != 2 && selectedMenu != 3);
@@ -78,10 +78,10 @@ public class Menu {
                 //TODO create MastermindPlay class with challengerMode attribut:
 
                 ChallengerMode chalMode = new ChallengerMode();
-                //MastermindGame mastermindPlay = new MastermindGame(chalMode);
-                chalMode.getComputerScretNbTable();
+                //masterMindGame.setMode(chalMode);
+                masterMindGame.startPlaying(chalMode);
 
-                System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
+                //System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
                 break;
 
             case 2:
