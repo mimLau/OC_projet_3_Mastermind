@@ -26,6 +26,10 @@ public class Parameters {
         return maxUsableDigit;
     }
 
+    public boolean isDevMode() {
+        return devMode;
+    }
+
     private void setSecretNbSize(int secretNbSize) {
         this.secretNbSize = secretNbSize;
     }
