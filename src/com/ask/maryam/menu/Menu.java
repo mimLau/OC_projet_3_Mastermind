@@ -1,7 +1,7 @@
 package com.ask.maryam.menu;
 
-import com.ask.maryam.play.ChallengerMode;
-import com.ask.maryam.play.MastermindPlay;
+import com.ask.maryam.mode.ChallengerMode;
+import com.ask.maryam.game.MastermindGame;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -74,7 +74,7 @@ public class Menu {
                 //TODO create MastermindPlay class with challengerMode attribut:
 
                 ChallengerMode chalMode = new ChallengerMode();
-                MastermindPlay mastermindPlay = new MastermindPlay(chalMode);
+                MastermindGame mastermindPlay = new MastermindGame(chalMode);
                 chalMode.getComputerScretNbTable();
 
                 System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
