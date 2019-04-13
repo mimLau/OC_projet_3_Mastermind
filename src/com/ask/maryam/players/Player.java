@@ -12,7 +12,7 @@ public class Player {
 
     public void turnToPlay(){}
 
-    public int getSecretNb(){
-        return 0;
+    public String getSecretNb(){
+        return null;
     }
 }
