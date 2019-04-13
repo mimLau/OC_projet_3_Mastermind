@@ -4,21 +4,24 @@ import com.ask.maryam.players.ComputerPlayer;
 import com.ask.maryam.players.HumanPlayer;
 import com.ask.maryam.players.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChallengerMode extends Mode {
-    protected  int [] playerProposedNbTable;
-    protected int [] computerScretNbTable;
+    protected List<Integer> playerProposedNbList = new ArrayList<>();
+    protected List<Integer> computerSecretNbList = new ArrayList<>();
     protected Player player = new HumanPlayer();
     protected Player computer = new ComputerPlayer();
 
 
 
 
-    public int[] getPlayerProposedNbTable() {
-        return playerProposedNbTable;
+    public List<Integer> getPlayerProposedNbTable() {
+        return playerProposedNbList;
     }
 
-    public int[] getComputerScretNbTable() {
-        return computerScretNbTable;
+    public List<Integer> getComputerScretNbTable() {
+        return computerSecretNbList;
     }
 
     public int getPlayerSecretNb(){
@@ -27,12 +30,15 @@ public class ChallengerMode extends Mode {
                 return secretNb;
     }
 
-    public int [] playerProposedNbTable(){
+    public List <Integer> putPlayerProposedNInList(){
         String playerProposedNb = player.getProposedNb();
 
+        System.out.println("Dans ChallengerMode " + playerProposedNb);
+        System.out.println("Length " + playerProposedNb.length());
+
         for(int i = 0; i< playerProposedNb.length(); i++){
-            playerProposedNbTable[i]= playerProposedNb.charAt(i);
+            playerProposedNbList.add(i, Character.getNumericValue(playerProposedNb.charAt(i)));
         }
-        return playerProposedNbTable;
+        return playerProposedNbList;
     }
 }
