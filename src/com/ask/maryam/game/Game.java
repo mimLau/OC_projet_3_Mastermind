@@ -1,8 +1,8 @@
 package com.ask.maryam.game;
 
-public abstract class Game {
-    protected int trialNb;
-    protected boolean gameOver;
+public interface  Game {
+     /*int trialNb;
+     boolean gameOver;*/
 
-    public void startGame(){}
+    public  void startGame();
 }
