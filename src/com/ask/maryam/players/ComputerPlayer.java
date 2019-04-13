@@ -1,16 +1,16 @@
 package com.ask.maryam.players;
 
 public class ComputerPlayer extends Player {
-    private int computerSecretNb;
-    private int computerProposedNb;
+    private String computerSecretNb;
+    private String computerProposedNb;
 
 
     public String getProposedNb(){
         return null;
     }
 
-    public int getSecretNb(){
-        return 0;
+    public String getSecretNb(){
+        return null;
     }
 
 
