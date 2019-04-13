@@ -14,6 +14,31 @@ public class Parameters {
     private int maxUsableDigit;
     private boolean devMode;
 
+
+    public Parameters() {
+        this.setSecretNbSize();
+        this.setMaxUsableDigit();
+        this.setTrialNbMax();
+
+    }
+
+    private void setSecretNbSize() {
+        this.secretNbSize = parseInt(this.retrieveProperties().getProperty("secretNbSize"));
+    }
+
+    private void setTrialNbMax() {
+        this.trialNbMax = parseInt(this.retrieveProperties().getProperty("trialNbMax"));
+    }
+
+    private void setMaxUsableDigit() {
+        this.maxUsableDigit = parseInt(this.retrieveProperties().getProperty("maxUsableDigit"));
+    }
+
+    public void setDevMode(boolean devMode) {
+        this.devMode = devMode;
+    }
+
+
     public int getSecretNbSize() {
         return secretNbSize;
     }
@@ -30,26 +55,12 @@ public class Parameters {
         return devMode;
     }
 
-    private void setSecretNbSize(int secretNbSize) {
-        this.secretNbSize = secretNbSize;
-    }
 
-    private void setTrialNbMax(int trialNbMax) {
-        this.trialNbMax = trialNbMax;
-    }
-
-    private void setMaxUsableDigit(int maxUsableDigit) {
-        this.maxUsableDigit = maxUsableDigit;
-    }
-
-    public void setDevMode(boolean devMode) {
-        this.devMode = devMode;
-    }
 
     /*
         Retrieve all properties or game parameters in the config.properties file.
      */
-    public void retrieveProperties(){
+    public Properties retrieveProperties(){
         final Properties prop = new Properties();
         InputStream input = null;
 
@@ -58,10 +69,6 @@ public class Parameters {
 
             // load a properties file
             prop.load(input);
-
-            this.setMaxUsableDigit(parseInt(prop.getProperty("maxUsableDigit")));
-            this.setSecretNbSize(parseInt(prop.getProperty("secretNbSize")));
-            this.setTrialNbMax(parseInt(prop.getProperty("trialNbMax")));
 
         } catch (final IOException ex) {
             ex.printStackTrace();
@@ -74,6 +81,8 @@ public class Parameters {
                 }
             }
         }
+
+        return prop;
     }
 
 }
