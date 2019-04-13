@@ -8,7 +8,7 @@ public class MastermindGame implements Game{
    private Mode mode;
 
 
-   public void startGameMessage() {
+   public void startWelcomeMessage() {
        System.out.println("\n********** Bienvenue dans le jeu Mastermind **********\n");
    }
 
