@@ -8,8 +8,6 @@ public class HumanPlayer extends Player {
     private String Name;
 
     public int getSecretNb(){
-
-
         return 5;
     }
 
