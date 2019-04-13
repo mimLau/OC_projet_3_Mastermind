@@ -7,14 +7,38 @@ public class MastermindGame implements Game{
    private int nbOfPresentNb;
    private Mode mode;
 
+   //private PlayParameters playParams;
+
+
+   public int goodPlace(){
+      return 0;
+   }
+
+   public int goodnumber(){
+      return 0;
+   }
 
    public void startWelcomeMessage() {
        System.out.println("\n********** Bienvenue dans le jeu Mastermind **********\n");
    }
 
+   @Override
+   public void compareNb() {
+
+   }
+
+   @Override
+   public String displayResult() {
+      return null;
+   }
+
+   @Override
+   public boolean isGameFinisched() {
+      return false;
+   }
 
 
-   //PlayParameters playParams;
+
 
 
     /*public MastermindGame(Mode mode) {
