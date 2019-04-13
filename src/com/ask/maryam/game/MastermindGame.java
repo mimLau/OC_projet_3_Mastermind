@@ -8,8 +8,8 @@ public class MastermindGame implements Game{
    private Mode mode;
 
 
-   public void startGame() {
-       System.out.println("Bienvenue dans le jeu Mastermind.");
+   public void startGameMessage() {
+       System.out.println("\n********** Bienvenue dans le jeu Mastermind **********\n");
    }
 
 
