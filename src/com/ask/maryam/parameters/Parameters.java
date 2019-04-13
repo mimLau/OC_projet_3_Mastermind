@@ -14,6 +14,17 @@ public class Parameters {
     private int maxUsableDigit;
     private boolean devMode;
 
+    public int getSecretNbSize() {
+        return secretNbSize;
+    }
+
+    public int getTrialNbMax() {
+        return trialNbMax;
+    }
+
+    public int getMaxUsableDigit() {
+        return maxUsableDigit;
+    }
 
     private void setSecretNbSize(int secretNbSize) {
         this.secretNbSize = secretNbSize;
@@ -34,7 +45,7 @@ public class Parameters {
     /*
         Retrieve all properties or game parameters in the config.properties file.
      */
-    private void retrieveProperties(){
+    public void retrieveProperties(){
         final Properties prop = new Properties();
         InputStream input = null;
 
