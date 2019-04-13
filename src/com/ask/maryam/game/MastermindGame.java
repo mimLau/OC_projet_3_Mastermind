@@ -6,6 +6,8 @@ import com.ask.maryam.mode.DualMode;
 import com.ask.maryam.mode.Mode;
 import com.ask.maryam.parameters.Parameters;
 
+import java.util.List;
+
 public class MastermindGame implements Game{
    private int nbOfGoodPlace;
    private int nbOfPresentNb;
@@ -33,8 +35,8 @@ public class MastermindGame implements Game{
    @Override
    public void startPlaying(ChallengerMode challMode) {
 
-      challMode.playerProposedNbTable();
-      System.out.println(challMode.playerProposedNbTable());
+      List<Integer> playerProposedTable = challMode.putPlayerProposedNInList();
+      System.out.println(playerProposedTable);
       // need computer secret nb table
       // need scann method for retrieving player proposed number transformed in a table
       // who tour is it
