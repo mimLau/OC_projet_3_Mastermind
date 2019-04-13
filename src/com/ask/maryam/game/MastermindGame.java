@@ -35,8 +35,12 @@ public class MastermindGame implements Game{
    @Override
    public void startPlaying(ChallengerMode challMode) {
 
+      System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur. Tapez votre nombre.");
+
       List<Integer> playerProposedTable = challMode.putPlayerProposedNInList();
+      List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
       System.out.println(playerProposedTable);
+      System.out.println(computerSecretNbList);
       // need computer secret nb table
       // need scann method for retrieving player proposed number transformed in a table
       // who tour is it
