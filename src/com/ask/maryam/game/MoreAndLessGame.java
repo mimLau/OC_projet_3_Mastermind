@@ -1,11 +1,12 @@
 package com.ask.maryam.game;
 
 import com.ask.maryam.mode.Mode;
+import com.ask.maryam.parameters.Parameters;
 
 public class MoreAndLessGame implements Game {
     private String [] moreAndLessTable;
     private Mode mode;
-    //private Parameters pram;
+    private Parameters params;
 
 
     @Override
