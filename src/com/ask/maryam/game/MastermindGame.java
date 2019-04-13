@@ -1,13 +1,13 @@
 package com.ask.maryam.game;
 
 import com.ask.maryam.mode.Mode;
+import com.ask.maryam.parameters.Parameters;
 
 public class MastermindGame implements Game{
    private int nbOfGoodPlace;
    private int nbOfPresentNb;
    private Mode mode;
-
-   //private PlayParameters playParams;
+   private Parameters params;
 
 
    public int goodPlace(){
