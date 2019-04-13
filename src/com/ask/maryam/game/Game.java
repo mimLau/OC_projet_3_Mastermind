@@ -4,5 +4,5 @@ public interface  Game {
      /*int trialNb;
      boolean gameOver;*/
 
-    public  void startGame();
+    public  void startWelcomeMessage();
 }
