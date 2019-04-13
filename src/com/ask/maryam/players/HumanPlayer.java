@@ -6,7 +6,7 @@ import com.ask.maryam.players.Player;
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {
-    private int playerSecretNb;
+    private String playerSecretNb;
     private String playerProposedNb;
     private String Name;
     private Parameters params = new Parameters();
@@ -15,15 +15,12 @@ public class HumanPlayer extends Player {
 
     public String getProposedNb(){
         //int maxUsableDigit = params.getMaxUsableDigit();
-
         playerProposedNb = sc.next();
-        System.out.println(playerProposedNb);
-
         return playerProposedNb;
     }
 
-    public int getSecretNb(){
-        playerSecretNb = sc.nextInt();
+    public String getSecretNb(){
+        playerSecretNb = sc.next();
         return playerSecretNb;
     }
 
