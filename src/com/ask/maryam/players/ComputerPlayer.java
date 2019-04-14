@@ -10,57 +10,46 @@ public class ComputerPlayer extends Player {
     private String computerProposedNb;
     private Parameters params = new Parameters();
 
-    private StringBuilder stbuild = new StringBuilder();
+
 
     public String getProposedNb(){
         return null;
     }
 
+    /**
+     * To get the computer random secret number.
+     * @return computer secret number in String type.
+     */
     public String getSecretNb(){
 
-        int secretNbSize = params.getSecretNbSize();
-        //computerSecretNb = String.valueOf(Utils.getRandom(secretNbSize));
-        computerSecretNb = String.valueOf(Utils.getRandomInteger(getMax(secretNbSize),getMin(secretNbSize)));
-        //computerSecretNb = String.valueOf(Utils.getRandomInteger(100000, 10000));
-        System.out.println("Nombre secret de l'ordinateur " + computerSecretNb);
+        /*  The secret number size must be equal to the secretNbSize parameter.
+            Each secret number's digit must be in the range imposed by the parameter maxUsableDigit.
+            Generate a random number for each digit of the secret number, and append them one by one.
+            For that a StringBuilder is necessary.
+         */
 
-        //String str = String.format(9,"%04d");
+        StringBuilder stbuild = new StringBuilder();
+        int secretNbSize = params.getSecretNbSize();
+        int getMaxUsableDigit = params.getMaxUsableDigit();
+
+        for(int i=0; i< secretNbSize; i++) {
+
+            stbuild =  stbuild.append(Utils.getRandom(getMaxUsableDigit + 1)); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+
+            /* We don't want a secret number beginning by zero so we verify if it is the case.
+               If it is, empty the StringBuilder and a tour to the boucle.
+             */
+
+            if(i==0){
+                if(String.valueOf(stbuild).equals("0")){
+                    stbuild.setLength(0);
+                    i=i-1;
+
+                    System.out.println("i " + i);
+                }
+             }
+        }
+        computerSecretNb= String.valueOf(stbuild);
         return computerSecretNb;
     }
-
-        private int getMax(int secretNbSize) {
-            stbuild.append(1);
-
-            System.out.println("secretNbSize " + secretNbSize);
-            for (int i = 0; i < secretNbSize; i++){
-                stbuild.append(0);
-                System.out.println("BuilderMin " + stbuild);
-
-            }
-
-            int getMax = parseInt(stbuild.toString());
-
-            /*String getMax = "1";
-                for (int i = 1; i < String.valueOf(secretNbSize).length()-1; i++)
-                    getMax = getMax + "0";
-
-             */
-            stbuild.setLength(0);
-                return getMax;
-        }
-
-        private int getMin(int secretNbSize){
-            stbuild.append(1);
-
-            System.out.println("BuilderMin " + stbuild);
-
-            for (int i = 0; i < secretNbSize-1; i++){
-                stbuild.append(0);
-                System.out.println("BuilderMax " + stbuild);
-            }
-            int getMin = parseInt(stbuild.toString());
-
-            return getMin;
-        }
-
 }
