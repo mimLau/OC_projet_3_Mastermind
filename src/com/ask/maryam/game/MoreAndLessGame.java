@@ -6,6 +6,8 @@ import com.ask.maryam.mode.DualMode;
 import com.ask.maryam.mode.Mode;
 import com.ask.maryam.parameters.Parameters;
 
+import java.util.List;
+
 public class MoreAndLessGame implements Game {
     private String [] moreAndLessTable;
     private Mode mode;
