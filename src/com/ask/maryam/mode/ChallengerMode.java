@@ -10,9 +10,12 @@ import java.util.List;
 public class ChallengerMode extends Mode {
     protected List<Integer> playerProposedNbList = new ArrayList<>();
     protected List<Integer> computerSecretNbList = new ArrayList<>();
-    protected Player player = new HumanPlayer();
+    protected HumanPlayer player = new HumanPlayer();
     protected Player computer = new ComputerPlayer();
 
+    public HumanPlayer getPlayer() {
+        return player;
+    }
 
     public List <Integer> putComputerSecretNbInList(){
         String computerSecretNb = computer.getSecretNb();
