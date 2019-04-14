@@ -22,7 +22,4 @@ public class Utils {
     public static int getRandomInteger(int maximum, int minimum){
         return ((int) (Math.random()*(maximum - minimum))) + minimum;
     }
-
-    //String str = String.format("%04d", 9);
-
 }
