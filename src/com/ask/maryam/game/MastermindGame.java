@@ -12,7 +12,7 @@ public class MastermindGame implements Game{
    private int nbOfGoodPlace;
    private int nbOfPresentNb;
    private Mode mode;
-   private Parameters params;
+   private Parameters params= new Parameters();
 
    public MastermindGame() {}
 
@@ -35,12 +35,22 @@ public class MastermindGame implements Game{
    @Override
    public void startPlaying(ChallengerMode challMode) {
 
-      System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur. Tapez votre nombre.");
+      int secretNbSize = params.getSecretNbSize();
+      int getMaxUsableDigit = params.getMaxUsableDigit();
 
-      List<Integer> playerProposedTable = challMode.putPlayerProposedNInList();
+      System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur.");
+      System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
+      System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + getMaxUsableDigit +".");
+
+
       List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
+      List<Integer> playerProposedTable = challMode.putPlayerProposedNInList();
+      System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> ");
+
+
       System.out.println(playerProposedTable);
-      System.out.println(computerSecretNbList);
+     System.out.println(computerSecretNbList);
+
       // need computer secret nb table
       // need scann method for retrieving player proposed number transformed in a table
       // who tour is it
