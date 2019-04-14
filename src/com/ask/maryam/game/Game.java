@@ -5,6 +5,8 @@ import com.ask.maryam.mode.DefenderMode;
 import com.ask.maryam.mode.DualMode;
 import com.ask.maryam.mode.Mode;
 
+import java.util.List;
+
 public interface  Game {
      /*int trialNb;
      boolean gameOver;*/
