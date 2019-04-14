@@ -125,7 +125,7 @@ public class MastermindGame implements Game{
    }
 
    @Override
-   public void compareNb(List<Integer> secretNb, List<Integer> proposedNb) {
+   public void compareNb() {
    }
 
    @Override
