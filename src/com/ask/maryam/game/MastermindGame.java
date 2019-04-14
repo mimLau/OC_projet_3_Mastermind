@@ -100,6 +100,47 @@ public class MastermindGame implements Game{
     * @param challMode
     */
    public void answerMessage(int nbOfGoodPlace, int nbOfPresentNb, ChallengerMode challMode ){
+
+      if(nbOfGoodPlace > 1) {
+
+         if(nbOfPresentNb > 1)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfPresentNb + " présents, " + nbOfGoodPlace + " bien placés.");
+         else if(nbOfPresentNb == 1)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placés.");
+         else if(nbOfPresentNb == 0)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfGoodPlace + " bien placés.");
+
+      } else if(nbOfGoodPlace == 1) {
+
+         if (nbOfPresentNb > 1)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfPresentNb + " présents, " + nbOfGoodPlace + " bien placé.");
+         else if (nbOfPresentNb == 1)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placé.");
+         else if(nbOfPresentNb == 0)
+            System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                    + nbOfGoodPlace + " bien placé.");
+
+      }else if(nbOfGoodPlace == 0)
+
+            if(nbOfPresentNb > 1)
+               System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                       + nbOfPresentNb + " présents.");
+            else if(nbOfPresentNb == 1)
+               System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                       + nbOfPresentNb + " présent.");
+            else if(nbOfPresentNb == 0)
+               System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
+                       + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placé.");
+
+
+
+
+
       if(nbOfGoodPlace > 1 && nbOfPresentNb > 1)
          System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
                                              + nbOfPresentNb + " présents, " + nbOfGoodPlace + " bien placés.");
