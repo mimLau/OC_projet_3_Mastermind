@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChallengerMode extends Mode {
-    protected List<Integer> playerProposedNbList = new ArrayList<>();
+    protected List<Integer> playerProposedNbList;
     protected List<Integer> computerSecretNbList = new ArrayList<>();
     protected HumanPlayer player = new HumanPlayer();
     protected Player computer = new ComputerPlayer();
@@ -25,8 +25,9 @@ public class ChallengerMode extends Mode {
         return computerSecretNbList;
     }
 
-    public List <Integer> putPlayerProposedNInList(){
+    public List <Integer> putPlayerProposedNbInList(){
         String playerProposedNb = player.getProposedNb();
+        playerProposedNbList = new ArrayList<>();
 
         for(int i = 0; i< playerProposedNb.length(); i++){
             playerProposedNbList.add(i, Character.getNumericValue(playerProposedNb.charAt(i)));
