@@ -35,6 +35,16 @@ public class MoreAndLessGame implements Game {
     }
 
     @Override
+    public void winTheGame() {
+
+    }
+
+    @Override
+    public void gameOver() {
+
+    }
+
+    @Override
     public void compareNb() {
 
     }
