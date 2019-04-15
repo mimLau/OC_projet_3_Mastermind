@@ -34,18 +34,21 @@ public class ComputerPlayer extends Player {
 
         for(int i=0; i< secretNbSize; i++) {
 
-            stbuild =  stbuild.append(Utils.getRandom(getMaxUsableDigit + 1)); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+            int randonNumber = Utils.getRandom(getMaxUsableDigit + 1); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+
+            if(stbuild.toString().contains(String.valueOf(randonNumber)))
+                i = i-1;
+            else
+                stbuild.append(randonNumber);
 
             /* We don't want a secret number beginning by zero so we verify if it is the case.
-               If it is, empty the StringBuilder and a tour to the boucle.
+               If it is, empty the StringBuilder and put additional round to the boucle.
              */
 
             if(i==0){
-                if(String.valueOf(stbuild).equals("0")){
+                if(stbuild.toString().equals("0")){
                     stbuild.setLength(0);
                     i=i-1;
-
-                    System.out.println("i " + i);
                 }
              }
         }
