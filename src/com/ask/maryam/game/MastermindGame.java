@@ -31,6 +31,8 @@ public class MastermindGame implements Game{
     * @return
     */
    public int goodPlace(List<Integer> secretNb, List<Integer> proposedNb){
+
+       nbOfGoodPlace = 0;
       for(int i=0; i<secretNbSize; i++){
          if(secretNb.get(i) == proposedNb.get(i)){
             nbOfGoodPlace++;
@@ -46,6 +48,7 @@ public class MastermindGame implements Game{
     * @return
     */
    public int goodNumber(List<Integer> secretNb, List<Integer> proposedNb){
+       nbOfPresentNb = 0;
       for(int i=0; i<secretNbSize; i++){
             if(secretNb.contains(proposedNb.get(i))&& proposedNb.get(i) != secretNb.get(i)){
             nbOfPresentNb++;
@@ -138,21 +141,6 @@ public class MastermindGame implements Game{
                        + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placé.");
 
 
-
-
-
-      if(nbOfGoodPlace > 1 && nbOfPresentNb > 1)
-         System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
-                                             + nbOfPresentNb + " présents, " + nbOfGoodPlace + " bien placés.");
-      else if(nbOfGoodPlace > 1 && nbOfPresentNb < 1)
-         System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
-                                             + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placés.");
-      else if(nbOfPresentNb > 1 && nbOfGoodPlace < 1)
-         System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
-                 + nbOfPresentNb + " présents, " + nbOfGoodPlace + " bien placé.");
-      else
-         System.out.println("Proposition : " + challMode.getPlayer().getPlayerProposedNb() + " -> Réponse : "
-                 + nbOfPresentNb + " présent, " + nbOfGoodPlace + " bien placé.");
    }
 
    @Override
