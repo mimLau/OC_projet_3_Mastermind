@@ -24,7 +24,8 @@ public class HumanPlayer extends Player {
     }
 
     public String getProposedNb(){
-        StringBuilder stbuild = new StringBuilder();
+        //StringBuilder stbuild = new StringBuilder();
+        // il faut verifeir que le nombre tapé n'a pas de chiffre dupliqué
         int secretNbSize = params.getSecretNbSize();
         int maxUsableDigit = params.getMaxUsableDigit();
 
