@@ -15,6 +15,8 @@ public interface  Game {
     public void startPlaying(ChallengerMode challMode);
     public void startPlaying(DefenderMode defenderMode);
     public void startPlaying(DualMode dualMode);
+    public void winTheGame();
+    public void gameOver();
     public void compareNb();
     public String displayResult();
     public boolean isGameFinisched();
