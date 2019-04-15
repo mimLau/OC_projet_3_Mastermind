@@ -11,12 +11,14 @@ import java.util.List;
 public class MastermindGame implements Game{
    private int nbOfGoodPlace = 0;
    private int nbOfPresentNb = 0;
+
    private Mode mode;
    private Parameters params= new Parameters();
 
    int secretNbSize = params.getSecretNbSize();
    int maxUsableDigit = params.getMaxUsableDigit();
    int trialNbMax = params.getTrialNbMax();
+    private int remainingTrials = trialNbMax;
 
    public MastermindGame() {}
 
@@ -32,6 +34,7 @@ public class MastermindGame implements Game{
     */
    public int goodPlace(List<Integer> secretNb, List<Integer> proposedNb){
 
+       System.out.println("secretNb " + secretNb);
        nbOfGoodPlace = 0;
       for(int i=0; i<secretNbSize; i++){
          if(secretNb.get(i) == proposedNb.get(i)){
@@ -84,12 +87,15 @@ public class MastermindGame implements Game{
 
          answerMessage(nbOfGoodPlace, nbOfPresentNb, challMode);
 
-         trialNbMax--;
-
+          remainingTrials--;
+         System.out.println("Essais restants: " + remainingTrials);
          System.out.println(playerProposedNbList);
          System.out.println(computerSecretNbList);
 
-      }while(trialNbMax!=0 || nbOfGoodPlace == secretNbSize);
+      }while(remainingTrials!=0 && nbOfGoodPlace != secretNbSize);
+
+       winTheGame();
+       gameOver();
 
       // need computer secret nb table
       // need scan method for retrieving player proposed number transformed in a table
@@ -153,7 +159,19 @@ public class MastermindGame implements Game{
 
    }
 
-   @Override
+    @Override
+    public void winTheGame() {
+        if(remainingTrials < trialNbMax && nbOfGoodPlace == secretNbSize)
+            System.out.println("\n********** Bravo!Vous avez gagné la partie! **********");
+    }
+
+    @Override
+    public void gameOver() {
+        if(remainingTrials == 0 && nbOfGoodPlace != secretNbSize)
+            System.out.println("\n********** Dommage!Vous avez perdu la partie! **********");
+    }
+
+    @Override
    public void compareNb() {
    }
 
