@@ -11,13 +11,13 @@ public class ChallengerMode extends Mode {
     protected List<Integer> playerProposedNbList;
     protected List<Integer> computerSecretNbList = new ArrayList<>();
     protected HumanPlayer player = new HumanPlayer();
-    protected Player computer = new ComputerPlayer();
+    protected ComputerPlayer computer = new ComputerPlayer();
 
     public HumanPlayer getPlayer() {
         return player;
     }
 
-    public Player getComputer() {
+    public ComputerPlayer getComputer() {
         return computer;
     }
 
