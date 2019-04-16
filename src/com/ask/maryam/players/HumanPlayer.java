@@ -34,12 +34,15 @@ public class HumanPlayer extends Player {
 
             isMaximalDigitOk = maximalUsableDigitOk(playerProposedNb, maxUsableDigit);
 
-            if(playerProposedNb.length() > secretNbSize)
+            if(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize)
                 System.out.println("Choisissez un nombre à " + secretNbSize + " chiffres.");
             if(!isMaximalDigitOk)
                 System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
 
-        }while(playerProposedNb.length() > secretNbSize || !isMaximalDigitOk);
+            /*for(int i=0; i<playerProposedNb.length(); i++)
+                if(playerProposedNb.charAt(i))*/
+
+        }while(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize || !isMaximalDigitOk);
 
         return playerProposedNb;
     }
