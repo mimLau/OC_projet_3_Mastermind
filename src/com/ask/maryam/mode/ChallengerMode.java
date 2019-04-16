@@ -17,6 +17,10 @@ public class ChallengerMode extends Mode {
         return player;
     }
 
+    public Player getComputer() {
+        return computer;
+    }
+
     public List <Integer> putComputerSecretNbInList(){
         String computerSecretNb = computer.getSecretNb();
         for(int i = 0; i< computerSecretNb.length(); i++){
