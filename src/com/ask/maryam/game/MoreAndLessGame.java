@@ -40,7 +40,7 @@ public class MoreAndLessGame implements Game {
     }
 
     @Override
-    public void gameOver() {
+    public void gameOver(String answer) {
 
     }
 
