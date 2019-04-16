@@ -22,4 +22,19 @@ public class Utils {
     public static int getRandomInteger(int maximum, int minimum){
         return ((int) (Math.random()*(maximum - minimum))) + minimum;
     }
+
+    /**
+     *
+     * @param word
+     * @return
+     */
+    public static boolean hasAllUniqueChars (String word) {
+        for(int i=0; i< word.length(); i++)   {
+
+            char c =word.charAt(i);
+            if(word.indexOf(c)!=word.lastIndexOf(c))
+                return false;
+        }
+        return true;
+    }
 }
