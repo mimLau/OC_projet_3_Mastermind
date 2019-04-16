@@ -17,7 +17,7 @@ public interface  Game {
     public void startPlaying(DefenderMode defenderMode);
     public void startPlaying(DualMode dualMode);
     public void winTheGame();
-    public void gameOver();
+    public void gameOver(String answer);
     public void playAgain();
     public void compareNb();
     public String displayResult();
