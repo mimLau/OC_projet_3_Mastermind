@@ -7,24 +7,25 @@ import com.ask.maryam.mode.Mode;
 import com.ask.maryam.parameters.Parameters;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class MastermindGame implements Game{
-   private int nbOfGoodPlace = 0;
-   private int nbOfPresentNb = 0;
+   private int nbOfGoodPlace;
+   private int nbOfPresentNb;
+   private int remainingTrials;
 
-   private Mode mode;
+   //private Mode mode;
    private Parameters params= new Parameters();
 
    int secretNbSize = params.getSecretNbSize();
    int maxUsableDigit = params.getMaxUsableDigit();
    int trialNbMax = params.getTrialNbMax();
-   private int remainingTrials = trialNbMax;
 
    public MastermindGame() {}
 
-   public void setMode(Mode mode) {
+   /*public void setMode(Mode mode) {
       this.mode = mode;
-   }
+   }*/
 
    /**
     *
@@ -92,6 +93,7 @@ public class MastermindGame implements Game{
       do {
          List<Integer> playerProposedNbList = challMode.putPlayerProposedNbInList();
 
+         remainingTrials = trialNbMax; //At the beginning, the number of remaining trials is equal to the max trial imposed in the properties file.
          nbOfGoodPlace = goodPlace(computerSecretNbList, playerProposedNbList);
          nbOfPresentNb = goodNumber(computerSecretNbList, playerProposedNbList);
 
@@ -171,14 +173,30 @@ public class MastermindGame implements Game{
 
     @Override
     public void winTheGame() {
-        if(remainingTrials < trialNbMax && nbOfGoodPlace == secretNbSize)
-            System.out.println("\n********** Bravo!Vous avez gagné la partie! **********");
+        if(remainingTrials < trialNbMax && nbOfGoodPlace == secretNbSize){
+            System.out.println("\n********** Bravo!Vous avez gagné la partie! **********\n");
+            playAgain();
+        }
+
     }
 
     @Override
     public void gameOver() {
-        if(remainingTrials == 0 && nbOfGoodPlace != secretNbSize)
-            System.out.println("\n********** Dommage!Vous avez perdu la partie! **********");
+        if(remainingTrials == 0 && nbOfGoodPlace != secretNbSize) {
+            System.out.println("\n********** Dommage!Vous avez perdu la partie! **********\n");
+            playAgain();
+        }
+
+    }
+
+    @Override
+    public void playAgain() {
+        System.out.println("Voulez-vous:");
+        System.out.println("1: Rejouer une partie");
+        System.out.println("2: Retouner au menu principal");
+        System.out.println("3: Quiitez le jeu");
+
+
     }
 
     @Override
