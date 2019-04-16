@@ -1,9 +1,9 @@
 package com.ask.maryam.game;
 
+import com.ask.maryam.menu.Menu;
 import com.ask.maryam.mode.ChallengerMode;
 import com.ask.maryam.mode.DefenderMode;
 import com.ask.maryam.mode.DualMode;
-import com.ask.maryam.mode.Mode;
 import com.ask.maryam.parameters.Parameters;
 
 import java.util.List;
@@ -14,12 +14,14 @@ public class MastermindGame implements Game{
    private int nbOfPresentNb;
    private int remainingTrials;
 
-   //private Mode mode;
+   private ChallengerMode challMode = new ChallengerMode();
    private Parameters params= new Parameters();
 
    int secretNbSize = params.getSecretNbSize();
    int maxUsableDigit = params.getMaxUsableDigit();
    int trialNbMax = params.getTrialNbMax();
+
+   Scanner sc = new Scanner(System.in);
 
    public MastermindGame() {}
 
@@ -84,7 +86,7 @@ public class MastermindGame implements Game{
            System.out.println("(Nombre secret: " + challMode.getComputer().getComputerSecretNb() + ")");
        }
        else{
-           System.out.println("Vous avez choisi le mode CHALLENGER en mode vous devez deviner le nombre secret de l'ordinateur.");
+           System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur.");
            System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
            System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + maxUsableDigit +".");
        }
@@ -194,8 +196,19 @@ public class MastermindGame implements Game{
         System.out.println("Voulez-vous:");
         System.out.println("1: Rejouer une partie");
         System.out.println("2: Retouner au menu principal");
-        System.out.println("3: Quiitez le jeu");
+        System.out.println("3: Quitez le jeu");
 
+        int choice = sc.nextInt();
+
+        switch(choice){
+            case 1:startPlaying(challMode, params);
+            break;
+            case 2: Menu menu = new Menu(params);
+                menu.displayPrincipalMenu();
+                break;
+            case 3: System.out.println("Au revoir et à bientôt.");
+            break;
+        }
 
     }
 
