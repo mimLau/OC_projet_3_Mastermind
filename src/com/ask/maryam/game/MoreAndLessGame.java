@@ -45,6 +45,11 @@ public class MoreAndLessGame implements Game {
     }
 
     @Override
+    public void playAgain() {
+
+    }
+
+    @Override
     public void compareNb() {
 
     }
