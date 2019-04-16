@@ -3,6 +3,7 @@ package com.ask.maryam.menu;
 import com.ask.maryam.game.MoreAndLessGame;
 import com.ask.maryam.mode.ChallengerMode;
 import com.ask.maryam.game.MastermindGame;
+import com.ask.maryam.parameters.Parameters;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,10 +14,15 @@ public class Menu {
     private int selectedMenu;
     private boolean isMastermindPlay;
     private boolean isMoreAndLessPlay;
+    private Parameters params;
 
     private MastermindGame masterMindGame = new MastermindGame();
     private MoreAndLessGame moreAndLessGame = new MoreAndLessGame();
 
+
+    public Menu(Parameters params) {
+        this.params = params;
+    }
 
     public void displayPrincipalMenu(){
 
@@ -79,7 +85,7 @@ public class Menu {
 
                 ChallengerMode chalMode = new ChallengerMode();
                 //masterMindGame.setMode(chalMode);
-                masterMindGame.startPlaying(chalMode);
+                masterMindGame.startPlaying(chalMode, params);
 
                 //System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
                 break;
