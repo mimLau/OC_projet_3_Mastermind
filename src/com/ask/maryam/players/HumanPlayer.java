@@ -36,7 +36,7 @@ public class HumanPlayer extends Player {
 
             isMaximalDigitOk = maximalUsableDigitOk(playerProposedNb, maxUsableDigit);
 
-            if(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize)
+            if(playerProposedNb.length() != secretNbSize)
                 System.out.println("Choisissez un nombre à " + secretNbSize + " chiffres.");
             if(!isMaximalDigitOk)
                 System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
@@ -46,7 +46,7 @@ public class HumanPlayer extends Player {
             if(!nbWithUniqueDigit)
                 System.out.println("Veuillez saisir un nombre avec des chiffres uniques.");
 
-        }while(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize || !isMaximalDigitOk || !nbWithUniqueDigit);
+        }while(playerProposedNb.length()!= secretNbSize || !isMaximalDigitOk || !nbWithUniqueDigit);
 
         return playerProposedNb;
     }
@@ -54,11 +54,13 @@ public class HumanPlayer extends Player {
     private boolean maximalUsableDigitOk(String playerNumber, int maxUsableDigit){
         for(int i=0; i<playerNumber.length(); i++){
 
-            if(Character.getNumericValue(playerNumber.charAt(i)) <= maxUsableDigit){
-                isMaximalDigitOk= true;
+
+            if(Character.getNumericValue(playerNumber.charAt(i)) >= maxUsableDigit){
+                i= playerNumber.length();
+                isMaximalDigitOk= false;
             }
             else {
-                isMaximalDigitOk= false;
+                isMaximalDigitOk= true;
             }
         }
         return isMaximalDigitOk;
