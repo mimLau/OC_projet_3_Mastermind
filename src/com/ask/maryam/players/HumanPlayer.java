@@ -1,5 +1,6 @@
 package com.ask.maryam.players;
 
+import com.ask.maryam.Utils.Utils;
 import com.ask.maryam.parameters.Parameters;
 import com.ask.maryam.players.Player;
 
@@ -28,6 +29,7 @@ public class HumanPlayer extends Player {
         // il faut verifeir que le nombre tapé n'a pas de chiffre dupliqué
         int secretNbSize = params.getSecretNbSize();
         int maxUsableDigit = params.getMaxUsableDigit();
+        boolean nbWithUniqueDigit = true;
 
         do{
             playerProposedNb = sc.next();
@@ -39,10 +41,12 @@ public class HumanPlayer extends Player {
             if(!isMaximalDigitOk)
                 System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
 
-            /*for(int i=0; i<playerProposedNb.length(); i++)
-                if(playerProposedNb.charAt(i))*/
+            nbWithUniqueDigit = Utils.hasAllUniqueChars(playerProposedNb);
 
-        }while(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize || !isMaximalDigitOk);
+            if(!nbWithUniqueDigit)
+                System.out.println("Veuillez saisir un nombre avec des chiffres uniques.");
+
+        }while(playerProposedNb.length() > secretNbSize || playerProposedNb.length() < secretNbSize || !isMaximalDigitOk || !nbWithUniqueDigit);
 
         return playerProposedNb;
     }
