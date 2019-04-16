@@ -20,7 +20,7 @@ public class MoreAndLessGame implements Game {
     }
 
     @Override
-    public void startPlaying(ChallengerMode challMode) {
+    public void startPlaying(ChallengerMode challMode, Parameters params) {
 
     }
 
