@@ -18,7 +18,7 @@ public class MastermindGame implements Game{
    int secretNbSize = params.getSecretNbSize();
    int maxUsableDigit = params.getMaxUsableDigit();
    int trialNbMax = params.getTrialNbMax();
-    private int remainingTrials = trialNbMax;
+   private int remainingTrials = trialNbMax;
 
    public MastermindGame() {}
 
@@ -72,12 +72,16 @@ public class MastermindGame implements Game{
     * @param challMode
     */
    @Override
-   public void startPlaying(ChallengerMode challMode) {
+   public void startPlaying(ChallengerMode challMode, Parameters params) {
 
       System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur.");
       System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
       System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + maxUsableDigit +".");
       List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
+
+       if(params.isDevMode())
+          System.out.println("(Nombre secret: " + challMode.getComputer().getSecretNb() +")");
+
       do {
 
          List<Integer> playerProposedNbList = challMode.putPlayerProposedNbInList();
@@ -87,7 +91,7 @@ public class MastermindGame implements Game{
 
          answerMessage(nbOfGoodPlace, nbOfPresentNb, challMode);
 
-          remainingTrials--;
+         remainingTrials--;
          System.out.println("Essais restants: " + remainingTrials);
          System.out.println(playerProposedNbList);
          System.out.println(computerSecretNbList);
