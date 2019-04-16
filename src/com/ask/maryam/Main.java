@@ -7,18 +7,17 @@ public class Main {
 
     public static void main(String [] args){
 
-        Menu menu = new Menu();
+        Parameters params = new Parameters();
+        try {
+            if(args[0] != null){
+                params.setDevMode(Boolean.parseBoolean(args[0]));
+            }
+        }catch (ArrayIndexOutOfBoundsException configParamNull){
+            params.setDevMode(false);
+        }
+
+        Menu menu = new Menu(params);
         menu.displayPrincipalMenu();
 
-        /*Parameters params = new Parameters();
-
-        System.out.println("Nombre de cases de la combinaison secrète: " + params.getSecretNbSize());
-        System.out.println("Nombre d'essais possible: " + params.getTrialNbMax());
-        System.out.println("Nombre de chiffre utilisable  " + params.getMaxUsableDigit());
-
-
-        params.setDevMode(Boolean.valueOf(args[0]).booleanValue());
-
-        System.out.println("Mode développeur " + params.isDevMode());*/
     }
 }
