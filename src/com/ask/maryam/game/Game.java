@@ -18,6 +18,7 @@ public interface  Game {
     public void startPlaying(DualMode dualMode);
     public void winTheGame();
     public void gameOver();
+    public void playAgain();
     public void compareNb();
     public String displayResult();
     public boolean isGameFinisched();
