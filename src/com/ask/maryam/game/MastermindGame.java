@@ -77,7 +77,8 @@ public class MastermindGame implements Game{
    @Override
    public void startPlaying(ChallengerMode challMode, Parameters params) {
 
-      List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
+       remainingTrials = trialNbMax; //At the beginning, the number of remaining trials is equal to the max trial imposed in the properties file.
+       List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
 
        if(params.isDevMode()) {
            System.out.println("Vous avez choisi le mode CHALLENGER en mode DEVELOPPEUR, vous devez deviner le nombre secret de l'ordinateur.");
@@ -95,7 +96,6 @@ public class MastermindGame implements Game{
       do {
          List<Integer> playerProposedNbList = challMode.putPlayerProposedNbInList();
 
-         remainingTrials = trialNbMax; //At the beginning, the number of remaining trials is equal to the max trial imposed in the properties file.
          nbOfGoodPlace = goodPlace(computerSecretNbList, playerProposedNbList);
          nbOfPresentNb = goodNumber(computerSecretNbList, playerProposedNbList);
 
@@ -109,7 +109,7 @@ public class MastermindGame implements Game{
       }while(remainingTrials!=0 && nbOfGoodPlace != secretNbSize);
 
        winTheGame();
-       gameOver();
+       gameOver(challMode.getComputer().getComputerSecretNb());
 
       // need computer secret nb table
       // need scan method for retrieving player proposed number transformed in a table
@@ -183,9 +183,10 @@ public class MastermindGame implements Game{
     }
 
     @Override
-    public void gameOver() {
+    public void gameOver(String answer) {
         if(remainingTrials == 0 && nbOfGoodPlace != secretNbSize) {
-            System.out.println("\n********** Dommage!Vous avez perdu la partie! **********\n");
+            System.out.println("\n********** Dommage!Vous avez perdu la partie! **********");
+            System.out.println("********** Le nombre secret est " + answer + " ******************\n");
             playAgain();
         }
 
