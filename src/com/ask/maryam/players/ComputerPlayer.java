@@ -10,7 +10,9 @@ public class ComputerPlayer extends Player {
     private String computerProposedNb;
     private Parameters params = new Parameters();
 
-
+    public String getComputerSecretNb() {
+        return computerSecretNb;
+    }
 
     public String getProposedNb(){
         return null;
@@ -36,7 +38,7 @@ public class ComputerPlayer extends Player {
 
             int randonNumber = Utils.getRandom(getMaxUsableDigit + 1); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
 
-            if(stbuild.toString().contains(String.valueOf(randonNumber)))
+            if(stbuild.toString().contains(String.valueOf(randonNumber))) //Verify if the random digit already exists in the stbuild. if yes, we add un rounf in the loop.
                 i = i-1;
             else
                 stbuild.append(randonNumber);
