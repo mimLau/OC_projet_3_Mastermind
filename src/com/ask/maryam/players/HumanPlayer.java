@@ -55,7 +55,7 @@ public class HumanPlayer extends Player {
         for(int i=0; i<playerNumber.length(); i++){
 
 
-            if(Character.getNumericValue(playerNumber.charAt(i)) >= maxUsableDigit){
+            if(Character.getNumericValue(playerNumber.charAt(i)) > maxUsableDigit){
                 i= playerNumber.length();
                 isMaximalDigitOk= false;
             }
