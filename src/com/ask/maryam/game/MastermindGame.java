@@ -74,16 +74,22 @@ public class MastermindGame implements Game{
    @Override
    public void startPlaying(ChallengerMode challMode, Parameters params) {
 
-      System.out.println("Vous avez choisi le mode CHALLENGER, vous devez deviner le nombre secret de l'ordinateur.");
-      System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
-      System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + maxUsableDigit +".");
       List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
 
-       if(params.isDevMode())
-          System.out.println("(Nombre secret: " + challMode.getComputer().getComputerSecretNb() +")");
+       if(params.isDevMode()) {
+           System.out.println("Vous avez choisi le mode CHALLENGER en mode DEVELOPPEUR, vous devez deviner le nombre secret de l'ordinateur.");
+           System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
+           System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + maxUsableDigit +".");
+           System.out.println("(Nombre secret: " + challMode.getComputer().getComputerSecretNb() + ")");
+       }
+       else{
+           System.out.println("Vous avez choisi le mode CHALLENGER en mode vous devez deviner le nombre secret de l'ordinateur.");
+           System.out.println("Tapez un nombre de " + secretNbSize + " chiffres.");
+           System.out.println("Vous pouvez choisir les chiffres allant de 0 à " + maxUsableDigit +".");
+       }
+
 
       do {
-
          List<Integer> playerProposedNbList = challMode.putPlayerProposedNbInList();
 
          nbOfGoodPlace = goodPlace(computerSecretNbList, playerProposedNbList);
