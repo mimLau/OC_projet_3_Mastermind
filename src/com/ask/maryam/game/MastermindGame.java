@@ -80,7 +80,7 @@ public class MastermindGame implements Game{
       List<Integer> computerSecretNbList = challMode.putComputerSecretNbInList();
 
        if(params.isDevMode())
-          System.out.println("(Nombre secret: " + challMode.getComputer().getSecretNb() +")");
+          System.out.println("(Nombre secret: " + challMode.getComputer().getComputerSecretNb() +")");
 
       do {
 
