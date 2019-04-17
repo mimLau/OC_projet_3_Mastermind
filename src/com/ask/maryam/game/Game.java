@@ -9,18 +9,14 @@ import com.ask.maryam.parameters.Parameters;
 import java.util.List;
 
 public interface  Game {
-     /*int trialNb;
-     boolean gameOver;*/
 
     public void startWelcomeMessage();
     public void startPlaying(ChallengerMode challMode, Parameters params);
-    public void startPlaying(DefenderMode defenderMode);
-    public void startPlaying(DualMode dualMode);
+    public void startPlaying(DefenderMode defenderMode, Parameters params);
+    public void startPlaying(DualMode dualMode, Parameters params);
     public void winTheGame();
     public void gameOver(String answer);
     public void playAgain();
-    public void compareNb();
     public String displayResult();
-    public boolean isGameFinisched();
 
 }
