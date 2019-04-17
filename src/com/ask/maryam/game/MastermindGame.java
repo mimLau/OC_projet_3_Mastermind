@@ -25,10 +25,6 @@ public class MastermindGame implements Game{
 
    public MastermindGame() {}
 
-   /*public void setMode(Mode mode) {
-      this.mode = mode;
-   }*/
-
    /**
     *
     * @param secretNb
@@ -164,12 +160,12 @@ public class MastermindGame implements Game{
    }
 
    @Override
-   public void startPlaying(DefenderMode defenderMode) {
+   public void startPlaying(DefenderMode defenderMode, Parameters param) {
 
    }
 
    @Override
-   public void startPlaying(DualMode dualMode) {
+   public void startPlaying(DualMode dualMode, Parameters params) {
 
    }
 
@@ -213,18 +209,10 @@ public class MastermindGame implements Game{
 
     }
 
-    @Override
-   public void compareNb() {
-   }
 
    @Override
    public String displayResult() {
       return null;
-   }
-
-   @Override
-   public boolean isGameFinisched() {
-      return false;
    }
 
 
