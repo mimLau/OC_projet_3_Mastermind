@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
     <Properties>
-        <!--Property name="basePath">C:\\logs</Property-->
         <Property name="basePath">logs</Property>
     </Properties>
 
@@ -15,9 +14,9 @@
             </Policies>
         </RollingFile>
 
-        <Console name="console" target="SYSTEM_OUT">
+        <!--Console name="console" target="SYSTEM_OUT">
             <PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
-        </Console>
+        </Console-->
     </Appenders>
     <Loggers>
         <Logger name="com.ask.maryam" level="debug" additivity="true">
