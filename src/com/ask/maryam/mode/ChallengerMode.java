@@ -1,41 +1,58 @@
 package com.ask.maryam.mode;
 
-import com.ask.maryam.players.ComputerPlayer;
-import com.ask.maryam.players.HumanPlayer;
-import com.ask.maryam.players.Player;
-
-import java.util.ArrayList;
+import com.ask.maryam.Utils.Utils;
+import com.ask.maryam.players.*;
 import java.util.List;
 
 public class ChallengerMode extends Mode {
-    protected List<Integer> playerProposedNbList;
-    protected List<Integer> computerSecretNbList = new ArrayList<>();
-    protected HumanPlayer player = new HumanPlayer();
-    protected ComputerPlayer computer = new ComputerPlayer();
 
-    public HumanPlayer getPlayer() {
-        return player;
+    public ChallengerMode(){
+        this.setName();
     }
 
-    public ComputerPlayer getComputer() {
-        return computer;
+    public void setName(){
+        this.name = "CHALLENGER";
     }
 
-    public List <Integer> putComputerSecretNbInList(){
-        String computerSecretNb = computer.getSecretNb();
-        for(int i = 0; i< computerSecretNb.length(); i++){
-            computerSecretNbList.add(i, Character.getNumericValue(computerSecretNb.charAt(i)));
-        }
-        return computerSecretNbList;
+    public String getSecretNb() {
+        this.secretNb = player2.getSecretNb(); //For the challengerMode, it's the computer which set a secret number.
+        return secretNb;                      // Player2 is the computer, see the method playerSelection.
     }
 
-    public List <Integer> putPlayerProposedNbInList(){
-        String playerProposedNb = player.getProposedNb();
-        playerProposedNbList = new ArrayList<>();
+    public String getProposedNb(){
+        this.proposedNb = player1.getProposedNb(); //For the challengerMode, it's the human player who set a proposed number
+        return proposedNb;                        // Player1 is the human player, see the method playerSelection.
+    }
 
-        for(int i = 0; i< playerProposedNb.length(); i++){
-            playerProposedNbList.add(i, Character.getNumericValue(playerProposedNb.charAt(i)));
-        }
-        return playerProposedNbList;
+    /**
+     * We define here, which player is the computer and which one is the human.
+     */
+    @Override
+    public void playersSelection() {
+        player1 = new HumanPlayer();
+        player2 = new ComputerPlayer();
+    }
+
+    /**
+     * Put the computer secret number in list for being compared.
+     * @param gameName
+     * @return A list of Integer with the computer secret number. Each digit of the secret number in a cell of the list.
+     */
+    @Override
+    public List<Integer> putSecretNumberInList(String gameName) {
+        player2.setSecretNb();
+        secretNbList = Utils.stringToList(player2.getSecretNb()); // The secret number is in String type, and we put it in a list of integer.
+        return secretNbList;
+    }
+
+    /**
+     * Put the human player proposed number in list for being compared.
+     * @param gameName
+     * @return A list of Integer with the human player proposed number. Each digit of the proposed  number in a cell of the list.
+     */
+    @Override
+    public List<Integer> putProposedNumberInList(String gameName) {
+        proposedNbList = putPropNbInListCondition(gameName,player1); // Add an additional verification when the human player types his number.
+        return proposedNbList;
     }
 }
