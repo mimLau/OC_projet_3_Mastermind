@@ -16,7 +16,7 @@ import java.util.Scanner;
 public abstract class Game {
 
     protected Parameters params = Parameters.INSTANCE;
-    protected final static String MASTERMINDGAME = "MastermindGame";
+    protected final static String MASTERMINDGAME = "Mastermind";
     protected final static String MOREANDLESSGAME = "MoreAndLessGame";
     protected String secretNb;
     protected String name;
