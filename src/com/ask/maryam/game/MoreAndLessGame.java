@@ -94,7 +94,7 @@ public class MoreAndLessGame extends Game {
 
         displayModeMessage(dualMode, this.getName());
 
-        System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + " : Tapez votre nombre secret: ");
+        System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + ": Tapez votre nombre secret de " + secretNbSize + " chiffres: ");
         List<Integer> secretNbList1 = dualMode.putSecretNumberInList(this.getClass().getSimpleName());//joueur
         dualMode.inversePlayersSelection();
         List<Integer> secretNbList2 = dualMode.putSecretNumberInList(this.getClass().getSimpleName());//ordinateur
@@ -110,7 +110,7 @@ public class MoreAndLessGame extends Game {
             System.out.println("\nEssais restants: " + remainingTrials1 + "\n");
             dualMode.inversePlayersSelection();
 
-            System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre: \n");
+            System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre de " + secretNbSize + " chiffres: \n");
             proposedNbList2 = dualMode.putProposedNumberInList(this.getClass().getSimpleName());
 
             goodPresentNb2 = verificationGoodPresentPlace(secretNbList2, proposedNbList2, dualMode);
