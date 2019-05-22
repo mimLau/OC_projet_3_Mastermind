@@ -3,121 +3,141 @@ package com.ask.maryam.menu;
 import com.ask.maryam.game.MoreAndLessGame;
 import com.ask.maryam.mode.ChallengerMode;
 import com.ask.maryam.game.MastermindGame;
-import com.ask.maryam.parameters.Parameters;
+import com.ask.maryam.mode.DefenderMode;
+import com.ask.maryam.mode.DualMode;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
 
-    Scanner sc = new Scanner(System.in);
-    private int selectedMenu;
-    private boolean isMastermindPlay;
-    private boolean isMoreAndLessPlay;
-    private Parameters params;
-
     private MastermindGame masterMindGame = new MastermindGame();
     private MoreAndLessGame moreAndLessGame = new MoreAndLessGame();
 
+    final static Logger LOGGER = LogManager.getLogger(Menu.class);
 
-    public Menu(Parameters params) {
-        this.params = params;
-    }
-
+    /**
+     * Display the principal menu that proposes to choose a game between the displayed games.
+     */
     public void displayPrincipalMenu(){
+        Scanner sc = new Scanner(System.in);
+        int selectedMenu = 0;
+        System.out.println("\n                                          Menu principal \n");
+        System.out.println("1: Mastermind");
+        System.out.println("2: Jeux du plus ou moins");
 
         do {
-            System.out.println("\n************ Menu principal **********\n");
-            System.out.println("1: Mastermind");
-            System.out.println("2: Jeux du plus ou moins");
-
             try {
                 selectedMenu = sc.nextInt();
             } catch (InputMismatchException e){
                 sc.next();
+                LOGGER.error("InputMismatchException: Attend un entier.");
+            }
+
+            if(selectedMenu != 1 && selectedMenu !=2){
+                System.out.println("Choisissez un chiffre entre 1 et 2.");
             }
 
         } while(selectedMenu != 1 && selectedMenu !=2);
-        displayPlayMenu();
+        displayPlayMenu(selectedMenu);
     }
 
-
-
-    public void displayPlayMenu(){
-
-             if(selectedMenu == 1) {
-                 masterMindGame.startWelcomeMessage();
-                 isMastermindPlay = true;
-             } else if(selectedMenu == 2) {
-                 moreAndLessGame.startWelcomeMessage();
-                 isMoreAndLessPlay = true;
-             }
-        displayMode();
+    /**
+     *
+     */
+    public void displayPlayMenu(int selectedMenu){
+        boolean isMastermindPlay = false;
+         if(selectedMenu == 1) {
+             masterMindGame.startWelcomeMessage(masterMindGame.getClass().getSimpleName());
+             isMastermindPlay = true;
+         } else if(selectedMenu == 2) {
+             moreAndLessGame.startWelcomeMessage(moreAndLessGame.getClass().getSimpleName());
+             isMastermindPlay = false;
+         }
+            displayMode(isMastermindPlay);
     }
 
-    public void displayMode() {
-        do {
-            selectedMenu =0;
-            System.out.println("Choisissez un mode");
-            System.out.println("1: Challenger");
-            System.out.println("2: Defenser");
-            System.out.println("3: Duel");
+    /**
+     * Display the menu with the different modes.
+     * @param isMastermindPlay false if the chosen game is moreAndLessGame.
+     */
+    public void displayMode(boolean isMastermindPlay) {
 
+        int selectedMenu =0;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Choisissez un mode");
+        System.out.println("1: Challenger");
+        System.out.println("2: Defenseur");
+        System.out.println("3: Duel");
+
+        do{
             try {
                 selectedMenu = sc.nextInt();
             } catch (InputMismatchException e) {
                 sc.next();
+                LOGGER.error("InputMismatchException: Attend un entier.");
             }
 
             if(isMastermindPlay)
-                launchMasterMindPlay();
-                else if (isMoreAndLessPlay)
-                    launchMoreAndLessPlay();
+                launchMasterMindPlay(selectedMenu);
+                else
+                    launchMoreAndLessPlay(selectedMenu);
+
+            if(selectedMenu != 1 && selectedMenu !=2 && selectedMenu != 3){
+                System.out.println("Choisissez un chiffre entre 1 et 3.");
+            }
 
         }while(selectedMenu != 1 && selectedMenu != 2 && selectedMenu != 3);
 
     }
 
-    public void launchMasterMindPlay() {
+    /**
+     * Launches the mastermind game in function of the selected item in the mode menu.
+     * @param selectedMenu The mode selected in the mode menu.
+     */
+    public void launchMasterMindPlay(int selectedMenu) {
         switch (selectedMenu) {
             case 1:
-                //TODO create MastermindPlay class with challengerMode attribut:
-
                 ChallengerMode chalMode = new ChallengerMode();
-                //masterMindGame.setMode(chalMode);
-                masterMindGame.startPlaying(chalMode, params);
-
-                //System.out.println("Vous avez choisi de jouer à Mastermind en mode challenger.");
+                masterMindGame.startPlaying(chalMode);
                 break;
 
             case 2:
-                //TODO create MastermindPlay class with defenderMode attribut:
-                System.out.println("Vous avez choisi de jouer à Mastermind en mode defenseur.");
+                DefenderMode defenderMode = new DefenderMode();
+                masterMindGame.startPlaying(defenderMode);
                 break;
 
             case 3:
-                //TODO create MastermindPlay class with dualMode attribut:
-                System.out.println("Vous avez choisi de jouer à Mastermind en mode duel.");
+                DualMode dualMode = new DualMode();
+                masterMindGame.startPlaying(dualMode);
                 break;
         }
     }
 
-        public void launchMoreAndLessPlay(){
-            switch (selectedMenu){
-                case 1:
-                    //TODO create MoreAndLessPlay class class with challengerMode attribut.
-                    System.out.println("Vous avez choisi de jouer au jeu du plus ou moins en mode challenger.");
-                    break;
+    /**
+     * Launches the more and less game in function of the selected item in the mode menu.
+     * @param selectedMenu The mode selected in the mode menu.
+     */
+    public void launchMoreAndLessPlay(int selectedMenu){
+        switch (selectedMenu){
+            case 1:
+                ChallengerMode chalMode = new ChallengerMode();
+                moreAndLessGame.startPlaying(chalMode);
+                break;
 
-                case 2:
-                    //TODO create MoreAndLessPlay class with defenderMode attribut:
-                    System.out.println("Vous avez choisi de jouer au jeu du plus ou moins en mode defenseur.");
-                    break;
+            case 2:
+                DefenderMode defenderMode = new DefenderMode();
+                moreAndLessGame.startPlaying(defenderMode);
+                break;
 
-                case 3:
-                    //TODO create MoreAndLessPlay class with dualMode attribut:
-                    System.out.println("Vous avez choisi de jouer au jeu du plus ou moins en mode duel.");
-                    break;
-            }
+            case 3:
+                DualMode dualMode = new DualMode();
+                moreAndLessGame.startPlaying(dualMode);
+                break;
         }
+    }
 }
