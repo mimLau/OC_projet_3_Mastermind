@@ -2,74 +2,31 @@ package com.ask.maryam.players;
 
 import com.ask.maryam.Utils.Utils;
 import com.ask.maryam.parameters.Parameters;
-import com.ask.maryam.players.Player;
 
-import java.util.Scanner;
-
-import static java.lang.Integer.parseInt;
 
 public class HumanPlayer extends Player {
-    private String playerSecretNb;
-    private String playerProposedNb;
-    private String Name;
-    private Parameters params = new Parameters();
-    boolean isMaximalDigitOk = true;
 
-    Scanner sc = new Scanner(System.in);
+    Parameters params = Parameters.INSTANCE;
 
-    public HumanPlayer() {
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPlayerProposedNb() {
-        return playerProposedNb;
+    /**
+     * Setting a secret number respecting the size imposed size in the config.properties.
+     */
+    @Override
+    public void setSecretNb(){
+       int secretNbSize = params.getSecretNbSize();
+       secretNb = Utils.enterNumber(secretNbSize);
     }
 
-    public String getProposedNb(){
-        //StringBuilder stbuild = new StringBuilder();
-        // il faut verifeir que le nombre tapé n'a pas de chiffre dupliqué
+    /**
+     * Setting a proposed number respecting the size imposed size in the config.properties.
+     */
+    @Override
+    public void setProposedNb(){
         int secretNbSize = params.getSecretNbSize();
-        int maxUsableDigit = params.getMaxUsableDigit();
-        boolean nbWithUniqueDigit = true;
-
-        do{
-            playerProposedNb = sc.next();
-
-            isMaximalDigitOk = maximalUsableDigitOk(playerProposedNb, maxUsableDigit);
-
-            if(playerProposedNb.length() != secretNbSize)
-                System.out.println("Choisissez un nombre à " + secretNbSize + " chiffres.");
-            if(!isMaximalDigitOk)
-                System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
-
-            nbWithUniqueDigit = Utils.hasAllUniqueChars(playerProposedNb);
-
-            if(!nbWithUniqueDigit)
-                System.out.println("Veuillez saisir un nombre avec des chiffres uniques.");
-
-        }while(playerProposedNb.length()!= secretNbSize || !isMaximalDigitOk || !nbWithUniqueDigit);
-
-        return playerProposedNb;
+        proposedNb = Utils.enterNumber(secretNbSize);
     }
-
-    private boolean maximalUsableDigitOk(String playerNumber, int maxUsableDigit){
-        for(int i=0; i<playerNumber.length(); i++){
-
-
-            if(Character.getNumericValue(playerNumber.charAt(i)) > maxUsableDigit){
-                i= playerNumber.length();
-                isMaximalDigitOk= false;
-            }
-            else {
-                isMaximalDigitOk= true;
-            }
-        }
-        return isMaximalDigitOk;
-    }
-
-    public String getSecretNb(){
-        playerSecretNb = sc.next();
-        return playerSecretNb;
-    }
-
-
 }
