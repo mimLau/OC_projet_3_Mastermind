@@ -3,58 +3,117 @@ package com.ask.maryam.players;
 import com.ask.maryam.Utils.Utils;
 import com.ask.maryam.parameters.Parameters;
 
-import static java.lang.Integer.parseInt;
+import java.util.*;
 
 public class ComputerPlayer extends Player {
-    private String computerSecretNb;
-    private String computerProposedNb;
-    private Parameters params = new Parameters();
+    Parameters params = Parameters.INSTANCE;
 
-    public String getComputerSecretNb() {
-        return computerSecretNb;
+    public ComputerPlayer(){
+        this.setName();
     }
 
-    public String getProposedNb(){
-        return null;
+    public void setName() {
+        this.name = "Ordinateur";
+    }
+
+
+    /**
+     * Set the computer secret number respecting the size imposed in the config.properties file.
+     * We use a random function to set the computer secret number.
+     */
+    @Override
+    public void setSecretNb(){
+            int secretNbSize = params.getSecretNbSize();
+            int getMaxUsableDigit = params.getMaxUsableDigit();
+            secretNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit);
     }
 
     /**
-     * To get the computer random secret number.
-     * @return computer secret number in String type.
+     * Set the computer proposed number respecting the size imposed in the config.properties file.
+     * We use a random function to set the computer proposed number.
      */
-    public String getSecretNb(){
-
-        /*  The secret number size must be equal to the secretNbSize parameter.
-            Each secret number's digit must be in the range imposed by the parameter maxUsableDigit.
-            Generate a random number for each digit of the secret number, and append them one by one.
-            For that a StringBuilder is necessary.
-         */
-
-        StringBuilder stbuild = new StringBuilder();
+    @Override
+    public void setProposedNb() {
         int secretNbSize = params.getSecretNbSize();
         int getMaxUsableDigit = params.getMaxUsableDigit();
+        proposedNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit);
+    }
 
-        for(int i=0; i< secretNbSize; i++) {
+    /**
+     * Set the computer proposed number. But this time, we don't use the random function, but an algorithm based one the first
+     * proposition done by the computer.
+     * @param goodPlace It's the number of digit which are in the good place in the first computer proposed number.
+     * @param goodNb It's the number of digit which are present but not in the good place in the first computer proposed number.
+     */
+    public void setProposedNb(Map<Integer, Integer> goodPlace, Map<Integer, Integer> goodNb) {
+        int secretNbSize = params.getSecretNbSize();
+        int getMaxUsableDigit = params.getMaxUsableDigit();
+        List<String> proposedNbList = new ArrayList<>();
 
-            int randonNumber = Utils.getRandom(getMaxUsableDigit + 1); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+        /* Creation of an ArrayList with the same size than the secretNbSize parameter
+        of the config.properties.*/
 
-            if(stbuild.toString().contains(String.valueOf(randonNumber))) //Verify if the random digit already exists in the stbuild. if yes, we add un rounf in the loop.
-                i = i-1;
-            else
-                stbuild.append(randonNumber);
-
-            /* We don't want a secret number beginning by zero so we verify if it is the case.
-               If it is, empty the StringBuilder and put additional round to the boucle.
-             */
-
-            if(i==0){
-                if(stbuild.toString().equals("0")){
-                    stbuild.setLength(0);
-                    i=i-1;
-                }
-             }
+        for(int i=0; i<secretNbSize; i++){
+            proposedNbList.add(i, "");
         }
-        computerSecretNb= String.valueOf(stbuild);
-        return computerSecretNb;
+
+
+        /* We retrieve all good number from the map and their position. We put them in the proposedNb list at the index
+         which is equal to their position.*/
+
+        Set<Integer> setGoodPlacePosition = goodPlace.keySet();
+        Iterator<Integer> goodPlaceIt = setGoodPlacePosition.iterator();
+
+
+        while(goodPlaceIt.hasNext()){
+            int key = goodPlaceIt.next();
+            proposedNbList.set(key, String.valueOf((goodPlace.get(key))));
+        }
+
+
+        /* We retrieve all present number from the map and their position. We put them in the proposedNb list in a empty cell
+         which the index is different from the key value of the map ( which correspond of the position of the present number).*/
+
+        Set<Integer> setGoodNbPosition = goodNb.keySet();
+        Iterator<Integer> goodNbIt = setGoodNbPosition.iterator();
+
+        while(goodNbIt.hasNext()){
+
+            int key = goodNbIt.next();
+            boolean boucle = true;
+            for(int i=0; boucle && i< proposedNbList.size(); i++){
+
+                if(proposedNbList.get(i).isEmpty() && i!= key){
+                        proposedNbList.set(i, String.valueOf((goodNb.get(key))));
+                        boucle = false;
+                }
+            }
+        }
+
+
+        /*
+            If the proposedNbList isn't complete, we full the empty cells with a unique random digit.
+         */
+
+        for(int i=0; i<proposedNbList.size(); i++) {
+
+            if (proposedNbList.get(i).isEmpty()) {
+
+                int randOmDigit;
+                boolean uniqueDigit;
+                do {
+                    randOmDigit = Utils.getRandom(getMaxUsableDigit + 1);
+                    uniqueDigit = proposedNbList.contains(String.valueOf(randOmDigit));
+
+                } while (uniqueDigit == true);
+                proposedNbList.set(i, String.valueOf(randOmDigit));
+            }
+        }
+
+        proposedNb = ""; // we empty the proposedN attribute from the first proposition and set on it the new proposition.
+        for(String value : proposedNbList){
+
+            proposedNb += value;
+        }
     }
 }
