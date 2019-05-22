@@ -25,10 +25,10 @@ Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
 	
  Dans le menu principal, il y a la possibilité pour chaque jeu, de choisir entre 3 modes:
  
- Mode challenger: Le joueur doit deviner la combinaison secrète de l'ordinateur.
- Mode défenseur: L'ordinateur devine la combinaison secrète du joueur.
- Mode duel: Le joueur et l'ordinateur jouent l'un contre l'autre et essayent de deviner chacun à leur tour
- la combinaison secrète de l'autre.
+ 1- Mode challenger: Le joueur doit deviner la combinaison secrète de l'ordinateur.
+ 2- Mode défenseur: L'ordinateur devine la combinaison secrète du joueur.
+ 3- Mode duel: Le joueur et l'ordinateur jouent l'un contre l'autre et essayent de deviner chacun à leur tour
+    la combinaison secrète de l'autre.
  
  
  Configuration des jeux:
@@ -39,17 +39,13 @@ Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
     dans la classe Parameters, à la ligne 124. 
     input = new FileInputStream("...................src/resources/config.properties");
  
- 2- Mode développeur:
- 
-	Le mode développeur permet d'afficher la combinaison secrète, pour pouvoir suivre le jeu et voir son évolution. 
+ 2- Le mode développeur permet d'afficher la combinaison secrète, pour pouvoir suivre le jeu et voir son évolution. 
 	Il est possible de passer en mode développeur en rajoutant true ou false en argument dans run puis 
 	dans edit configurations.
 	Il est également possible de configurer le mode dev directement dans le fichier config.properties 
 	qui se trouve dans le repertoire src/resources.
   
- 3- Paramétrage du jeu
- 
-	Configuration du nombre maxiaml d'essais possible:	variable trialNbMax
+ 3- Configuration du nombre maximal d'essais possible:	variable trialNbMax
 	Configuration de la taille de la combinaison secrète:  variable secretNbSize
 	Configuration du le nombre chiffres utilisables (de 4 à 9) pour le mastermind:  variable maxUsableDigit
   
