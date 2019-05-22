@@ -135,7 +135,7 @@ public class MastermindGame extends Game {
        displayModeMessage(dualMode,this.getName());
 
        // Concerns player2, the human player.
-       System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + " : Tapez votre nombre secret: ");
+       System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + ": Tapez votre nombre secret de " + secretNbSize + " chiffres: ");
 
        // Concerns player2, the human player. See Dual mode class.
        List<Integer> secretNbList1 = dualMode.putSecretNumberInList(this.getClass().getSimpleName());
@@ -173,7 +173,7 @@ public class MastermindGame extends Game {
            System.out.println("Essais restants: " + remainingTrials1 + "\n");
            dualMode.inversePlayersSelection();
 
-           System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre: \n");
+           System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre de " + secretNbSize + " chiffres: \n");
            proposedNbList2 = dualMode.putProposedNumberInList(this.getClass().getSimpleName());
 
            goodPresentNb2 = verificationGoodPresentPlace(secretNbList2, proposedNbList2, dualMode);
