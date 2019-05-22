@@ -25,10 +25,7 @@ Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
 	
  Dans le menu principal, il y a la possibilité pour chaque jeu, de choisir entre 3 modes:
  
- Mode challenger: Le joueur doit deviner la combinaison secrète de l'ordinateur.
- Mode défenseur: L'ordinateur devine la combinaison secrète du joueur.
- Mode duel: Le joueur et l'ordinateur jouent l'un contre l'autre et essayent de deviner chacun à leur tour
- la combinaison secrète de l'autre.
+
  
  
  Configuration des jeux:
