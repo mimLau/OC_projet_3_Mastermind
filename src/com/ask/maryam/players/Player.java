@@ -1,18 +1,31 @@
 package com.ask.maryam.players;
 
-import com.ask.maryam.parameters.Parameters;
+import java.util.Map;
 
-public class Player {
+public abstract class Player {
 
-    private Parameters params;
+  protected String secretNb;
+  protected String proposedNb;
+  protected String name;
 
-    public String getProposedNb(){
-        return null;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void turnToPlay(){}
+  public void setName(String name){
+    this.name = name;
+  }
 
-    public String getSecretNb(){
-        return null;
-    }
+  public String getSecretNb() {
+    return secretNb;
+  }
+
+  public String getProposedNb() {
+    return proposedNb;
+  }
+
+  public abstract void setSecretNb();
+  public abstract void setProposedNb();
+  public void setProposedNb(Map<Integer, Integer> goodPlace, Map<Integer, Integer> goodNb) {
+  }
 }
