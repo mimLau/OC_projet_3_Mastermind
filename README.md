@@ -1,11 +1,11 @@
-											Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
+Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
   
   
  Version java utilisée:
  Java 11.0.2
  
   
-												Contexte:
+ Contexte:
  
  Mastermind:
  
@@ -21,11 +21,8 @@
  trop petit, un "-" si le chiffre proposé est trop grand et un "=" si c'est le bon chiffre.
  
  
- 
- 
-												Modes:
-												
- 
+ Modes:
+	
  Dans le menu principal, il y a la possibilité pour chaque jeu, de choisir entre 3 modes:
  
  Mode challenger: Le joueur doit deviner la combinaison secrète de l'ordinateur.
@@ -34,11 +31,8 @@
  la combinaison secrète de l'autre.
  
  
- 
+ Configuration des jeux:
 
-								Configuration des jeux:
-												
-												
  Avant de lancer l'application, il va falloir procéder à quelques configurations.
  
  1- Ajouter le chemin absolu du fichier config.properties (qui se trouve dans src/resources), 
@@ -58,27 +52,21 @@
 	Configuration du nombre maxiaml d'essais possible:	variable trialNbMax
 	Configuration de la taille de la combinaison secrète:  variable secretNbSize
 	Configuration du le nombre chiffres utilisables (de 4 à 9) pour le mastermind:  variable maxUsableDigit
+  
  
- 
- 
-								Utilisation des log:
-												
-												
+ Utilisation des logs:
+
  Le fichier log4j2.xml se trouve dans le repertoire src et les fichiers logs s'afficheront dans le repertoire logs.
  Pour pouvoir récuperer les logs journaliers, il faudra rajouter les librairies adéquates.
  voir partie librairies utilisées.
  
  
-  
-								Librairies utilisées:
-												
-  
+ Librairies utilisées:
+	
  Rajouter dans le projet, les librairies Log4j-api-2.11.2 et log4j-core-2.11.2 qui se trouvent dans le dossier lib.
   
   
-  
-								Lancement de l'application:
-												
-						
+ Lancement de l'application:
+	
  Une fois toutes les configurations effectuées, pour lancer l'application, il faut exécuter la classe Main 
  qui se trouve dans le repertoire src/com/ask/maryam.
