@@ -12,9 +12,10 @@ public class Main {
          */
         Parameters params = Parameters.INSTANCE;
 
+
+        params.setMaxUsableDigit();
         params.setSecretNbSize();
         params.setTrialNbMax();
-        params.setMaxUsableDigit();
 
         /*
             Verify if the argument isDev in the "run config" exits, if true we use it, if not, we set the dev mode
