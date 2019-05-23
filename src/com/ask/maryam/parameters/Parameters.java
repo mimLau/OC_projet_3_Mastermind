@@ -32,6 +32,11 @@ public enum Parameters {
                 System.out.println("\nVeuillez saisir un nombre pour le secretNbSize dans le fichier config.properties.");
                 this.secretNbSize = 0;
             }
+
+            if(this.secretNbSize > maxUsableDigit){
+                System.out.println("\nDans le fichier config.properties, veuillez choisir un secretNbSize inférieur au maxUsableDigit.");
+                this.secretNbSize = 0;
+            }
         }
         else {
             System.out.println("\nVeuillez paramétrer le secretNbSize dans le fichier config.properties.");
