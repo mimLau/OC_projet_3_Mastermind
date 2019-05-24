@@ -33,8 +33,8 @@ public enum Parameters {
                 this.secretNbSize = 0;
             }
 
-            if(this.secretNbSize > maxUsableDigit){
-                System.out.println("\nDans le fichier config.properties, veuillez choisir un secretNbSize inférieur au maxUsableDigit.");
+            if(this.secretNbSize > this.maxUsableDigit){
+                System.out.println("\nDans le fichier config.properties, veuillez choisir un secretNbSize inférieur ou égal au maxUsableDigit.");
                 this.secretNbSize = 0;
             }
         }
@@ -76,7 +76,7 @@ public enum Parameters {
 
                 // The maxUsableDigit must be between 4 and 9.
                 if(intMaxUsableDigit >= 4 && intMaxUsableDigit <10){
-                    this.maxUsableDigit = parseInt(retrieveProperties().getProperty("maxUsableDigit"));
+                    this.maxUsableDigit = intMaxUsableDigit;
                 } else {
                     System.out.println("\nVeuillez choisir un maxUsableDigit entre 4 et 9 dans le fichier config.properties.");
                     this.maxUsableDigit = 0;
