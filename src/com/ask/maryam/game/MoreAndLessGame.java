@@ -34,7 +34,7 @@ public class MoreAndLessGame extends Game {
         List<Map<Integer, Integer>>  goodPresentNb;
         challMode.playersSelection();
         displayModeMessage(challMode, this.getName());
-        List<Integer> secretNbList = challMode.putSecretNumberInList(this.getClass().getSimpleName());
+        List<Integer> secretNbList = challMode.putSecretNumberInList(this.getName());
 
         do{
             List<Integer> proposedNbList = challMode.putProposedNumberInList(this.getClass().getSimpleName());
@@ -59,10 +59,10 @@ public class MoreAndLessGame extends Game {
         //At the beginning, the number of remaining trials is equal to the max trial imposed in the properties file.
         defenderMode.playersSelection();
         displayModeMessage(defenderMode, this.getName());
-        List<Integer> secretNbList = defenderMode.putSecretNumberInList(this.getClass().getSimpleName());
+        List<Integer> secretNbList = defenderMode.putSecretNumberInList(this.getName());
 
 
-        List<Integer> proposedNbList = defenderMode.putProposedNumberInList(this.getClass().getSimpleName());
+        List<Integer> proposedNbList = defenderMode.putProposedNumberInList(this.getName());
         do{
             goodPresentNb = verificationGoodPresentPlace(secretNbList, proposedNbList, defenderMode);
             remainingTrials--;
