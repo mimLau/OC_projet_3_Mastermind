@@ -5,7 +5,6 @@ import com.ask.maryam.players.ComputerPlayer;
 import com.ask.maryam.players.HumanPlayer;
 
 import java.util.List;
-import java.util.Map;
 
 public class DefenderMode extends Mode {
 
@@ -56,7 +55,7 @@ public class DefenderMode extends Mode {
      */
     @Override
     public List<Integer> putProposedNumberInList(String gameName) {
-        player1.setProposedNb();
+        player1.setProposedNb(gameName);
         proposedNbList = Utils.stringToList(player1.getProposedNb()); //The proposed number is in String type, and we put it in a list of integer.
         return proposedNbList;
     }
