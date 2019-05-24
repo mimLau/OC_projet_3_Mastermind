@@ -40,7 +40,7 @@ public class ChallengerMode extends Mode {
      */
     @Override
     public List<Integer> putSecretNumberInList(String gameName) {
-        player2.setSecretNb();
+        player2.setSecretNb(gameName);
         secretNbList = Utils.stringToList(player2.getSecretNb()); // The secret number is in String type, and we put it in a list of integer.
         return secretNbList;
     }
