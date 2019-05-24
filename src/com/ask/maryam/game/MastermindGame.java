@@ -40,14 +40,14 @@ public class MastermindGame extends Game {
          Here it's the computer which sets a secret number.
          We can see it in the Challenger mode class.
         */
-       List<Integer> secretNbList = challMode.putSecretNumberInList(this.getClass().getSimpleName());
+       List<Integer> secretNbList = challMode.putSecretNumberInList(this.getName());
 
        /*
           The human player sets each time a proposed number until he finds the good one
           or he has finished all his trials.
         */
        do{
-           List<Integer> proposedNbList = challMode.putProposedNumberInList(this.getClass().getSimpleName());
+           List<Integer> proposedNbList = challMode.putProposedNumberInList(this.getName());
            goodPresentNb = verificationGoodPresentPlace(secretNbList, proposedNbList, challMode);
            answerMessage(goodPresentNb.get(0).size(), goodPresentNb.get(1).size(), challMode);
            remainingTrials--;
@@ -77,13 +77,13 @@ public class MastermindGame extends Game {
          Here it's the human player who sets a secret number.
          We can see it in the Defender mode class.
         */
-       List<Integer> secretNbList = defenderMode.putSecretNumberInList(this.getClass().getSimpleName());
+       List<Integer> secretNbList = defenderMode.putSecretNumberInList(this.getName());
 
        /*
          The computer has to guess the secret number. For the first proposal, the computer set a proposed
          number using a random method.
         */
-       List<Integer> proposedNbList = defenderMode.putProposedNumberInList(this.getClass().getSimpleName());
+       List<Integer> proposedNbList = defenderMode.putProposedNumberInList(this.getName());
 
        /*
           Then the computer sets each time a proposed number until he finds the good one
@@ -135,22 +135,22 @@ public class MastermindGame extends Game {
        displayModeMessage(dualMode,this.getName());
 
        // Concerns player2, the human player.
-       System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + ": Tapez votre nombre secret de " + secretNbSize + " chiffres: ");
+       System.out.println("\nJoueur "+ dualMode.getPlayer2().getName() + ": Tapez votre nombre secret de " + secretNbSize + " chiffres compris entre 0 et " + maxUsableDigit + " : ");
 
        // Concerns player2, the human player. See Dual mode class.
-       List<Integer> secretNbList1 = dualMode.putSecretNumberInList(this.getClass().getSimpleName());
+       List<Integer> secretNbList1 = dualMode.putSecretNumberInList(this.getName());
 
        // We inverse the selection, player2 becomes player1 and player1 becomes palyer2.
        dualMode.inversePlayersSelection();
 
        // Concerns the computer.
-       List<Integer> secretNbList2 = dualMode.putSecretNumberInList(this.getClass().getSimpleName());
+       List<Integer> secretNbList2 = dualMode.putSecretNumberInList(this.getName());
 
        // We inverse again the selection, player2 becomes player1 and player1 becomes player2.
        dualMode.inversePlayersSelection();
 
        //Concerns the computer which sets his first proposed number using the random method.
-       List<Integer> proposedNbList1 = dualMode.putProposedNumberInList(this.getClass().getSimpleName());
+       List<Integer> proposedNbList1 = dualMode.putProposedNumberInList(this.getName());
 
 
        List<Integer> proposedNbList2;
@@ -173,8 +173,8 @@ public class MastermindGame extends Game {
            System.out.println("Essais restants: " + remainingTrials1 + "\n");
            dualMode.inversePlayersSelection();
 
-           System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre de " + secretNbSize + " chiffres: \n");
-           proposedNbList2 = dualMode.putProposedNumberInList(this.getClass().getSimpleName());
+           System.out.println("                                     " + dualMode.getPlayer1().getName() + ": Vous jouez contre l'ordinateur. Proposez un nombre de " + secretNbSize + " compris entre 0 et " + maxUsableDigit + " : ");
+           proposedNbList2 = dualMode.putProposedNumberInList(this.getName());
 
            goodPresentNb2 = verificationGoodPresentPlace(secretNbList2, proposedNbList2, dualMode);
            answerMessage(goodPresentNb2.get(0).size(), goodPresentNb2.get(1).size(), dualMode);
