@@ -59,12 +59,12 @@ public class Utils {
             numberInString = sc.next();
 
             if(numberInString.length() != secretNbSize)
-                System.out.println("Choisissez un nombre à " + secretNbSize + " chiffres.");
+                System.out.println("\nChoisissez un nombre à " + secretNbSize + " chiffres.\n");
 
             nbWithUniqueDigit = Utils.hasAllUniqueChars(numberInString);
 
             if(!nbWithUniqueDigit)
-                System.out.println("Veuillez saisir un nombre avec des chiffres uniques.");
+                System.out.println("\nVeuillez saisir un nombre avec des chiffres uniques.\n");
 
         }while(numberInString.length()!= secretNbSize || !nbWithUniqueDigit);
 
@@ -83,11 +83,18 @@ public class Utils {
      * @param getMaxUsableDigit It's the maximal digit (which is indicated in the Parameters class) that we can use for the secret number or the  proposed number.
      * @return A string with a random number with a given size (inferior than the secret number size) and with digits inferior or equal to the maximal usable digit.
      */
-    public static String getRandomNumber( int secretNbSize,int getMaxUsableDigit ){
+    public static String getRandomNumber( int secretNbSize,int getMaxUsableDigit, String gameName ){
         StringBuilder stbuild = new StringBuilder();
         for(int i=0; i< secretNbSize; i++) {
 
-            int randonNumber = Utils.getRandom(getMaxUsableDigit + 1); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+            int randonNumber = 0;
+
+            if(gameName.equals("Mastermind")) {
+
+                 randonNumber = Utils.getRandom(getMaxUsableDigit + 1); //Generate un random number between 0 and the maximal usable digit, and put it in a StringBuilder.
+            } else
+                randonNumber = Utils.getRandom(10);
+
 
             if(stbuild.toString().contains(String.valueOf(randonNumber))) //Verify if the random digit already exists in the stbuild. If yes, we add an additional round in the loop.
                 i = i-1;
