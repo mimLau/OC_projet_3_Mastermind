@@ -16,7 +16,7 @@ public class HumanPlayer extends Player {
      * Setting a secret number respecting the size imposed size in the config.properties.
      */
     @Override
-    public void setSecretNb(){
+    public void setSecretNb(String gameName){
        int secretNbSize = params.getSecretNbSize();
        secretNb = Utils.enterNumber(secretNbSize);
     }
@@ -25,7 +25,7 @@ public class HumanPlayer extends Player {
      * Setting a proposed number respecting the size imposed size in the config.properties.
      */
     @Override
-    public void setProposedNb(){
+    public void setProposedNb(String gameName){
         int secretNbSize = params.getSecretNbSize();
         proposedNb = Utils.enterNumber(secretNbSize);
     }
