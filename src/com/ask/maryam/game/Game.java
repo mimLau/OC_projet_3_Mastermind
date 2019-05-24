@@ -81,7 +81,7 @@ public abstract class Game {
         // This message is displayed for the player when he had to enter his secret number or his proposed number.
         //For the dual mode, as the computer and the player plays in turn, this constraint is verified directly in the game class.
         if(gameName.equals(MASTERMINDGAME)&& !(mode instanceof DualMode)){
-            System.out.println("Vous devez choisir des chiffres allant de 0 à " + maxUsableDigit +".");
+            System.out.println("Vous devez choisir des chiffres allant de 0 à " + maxUsableDigit +".\n");
         }
     }
 
