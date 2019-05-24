@@ -20,7 +20,7 @@ public abstract class Mode {
     Parameters params = Parameters.INSTANCE;
 
 
-    private final static String MASTERMINDGAME = "MastermindGame";
+    private final static String MASTERMINDGAME = "Mastermind";
 
     public Player getPlayer1() {
         return player1;
@@ -63,14 +63,14 @@ public abstract class Mode {
         
         if(gameName.equals(MASTERMINDGAME)) {
             do {
-                player.setProposedNb();
+                player.setProposedNb(gameName);
                 isMaximalDigitOk = maximalUsableDigitOk(player.getProposedNb(), maxUsableDigit);
                 if (!isMaximalDigitOk)
-                    System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
+                    System.out.println("\nChoisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".\n");
 
 
             } while (isMaximalDigitOk == false);
-        }else  player.setProposedNb();
+        }else  player.setProposedNb(gameName);
 
         proposedNbList = Utils.stringToList(player.getProposedNb());
 
@@ -93,14 +93,14 @@ public abstract class Mode {
 
         if(gameName.equals(MASTERMINDGAME)) {
             do {
-                player.setSecretNb();
+                player.setSecretNb(gameName);
                 isMaximalDigitOk = maximalUsableDigitOk(player.getSecretNb(), maxUsableDigit);
                 if (!isMaximalDigitOk)
                     System.out.println("Choisissez un nombre avec des chiffres compris entre 0 et " + maxUsableDigit + ".");
 
 
             } while (isMaximalDigitOk == false);
-        }else  player.setSecretNb();
+        }else  player.setSecretNb(gameName);
 
         secretNbList = Utils.stringToList(player.getSecretNb());
 
@@ -127,7 +127,6 @@ public abstract class Mode {
         }
         return isMaximalDigitOk;
     }
-
 
 
     /**
