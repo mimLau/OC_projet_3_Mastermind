@@ -37,7 +37,7 @@ Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
  Avant de lancer l'application, il va falloir procéder à quelques configurations.
  
  1- Ajouter le chemin absolu du fichier config.properties (qui se trouve dans src/resources), 
-    dans la classe Parameters, à la ligne 124. 
+    dans la classe Parameters, à la ligne 129.
     input = new FileInputStream("...................src/resources/config.properties");
  
  2- Mode développeur:
