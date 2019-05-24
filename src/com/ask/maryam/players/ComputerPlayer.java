@@ -22,10 +22,10 @@ public class ComputerPlayer extends Player {
      * We use a random function to set the computer secret number.
      */
     @Override
-    public void setSecretNb(){
+    public void setSecretNb(String gameName){
             int secretNbSize = params.getSecretNbSize();
             int getMaxUsableDigit = params.getMaxUsableDigit();
-            secretNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit);
+            secretNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit, gameName);
     }
 
     /**
@@ -33,10 +33,10 @@ public class ComputerPlayer extends Player {
      * We use a random function to set the computer proposed number.
      */
     @Override
-    public void setProposedNb() {
+    public void setProposedNb(String gameName) {
         int secretNbSize = params.getSecretNbSize();
         int getMaxUsableDigit = params.getMaxUsableDigit();
-        proposedNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit);
+        proposedNb = Utils.getRandomNumber(secretNbSize, getMaxUsableDigit, gameName);
     }
 
     /**
