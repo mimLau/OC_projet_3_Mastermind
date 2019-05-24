@@ -24,8 +24,8 @@ public abstract class Player {
     return proposedNb;
   }
 
-  public abstract void setSecretNb();
-  public abstract void setProposedNb();
+  public abstract void setSecretNb(String gameName);
+  public abstract void setProposedNb(String gameName);
   public void setProposedNb(Map<Integer, Integer> goodPlace, Map<Integer, Integer> goodNb) {
   }
 }
