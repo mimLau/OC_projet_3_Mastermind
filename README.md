@@ -51,7 +51,7 @@ Projet 3 Openclassrooms: Mastermind / Jeu du plus ou moins
  3- Paramétrage du jeu
  
 	Configuration du nombre maximal d'essais possible:	variable trialNbMax
-	Configuration de la taille de la combinaison secrète:  variable secretNbSize
+	Configuration de la taille de la combinaison secrète:  variable secretNbSize doit être inférieure ou égale à maxUsableDigit.
 	Configuration du le nombre chiffres utilisables (de 4 à 9) pour le mastermind:  variable maxUsableDigit
   
  
